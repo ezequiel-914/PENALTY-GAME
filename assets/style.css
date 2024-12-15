@@ -1,0 +1,94 @@
+*{  margin: 0;
+    padding: 0;
+    box-sizing: border-box;}
+.stage{
+    width: 100%;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas:
+    "game-info game-info game-info game-info"
+    "goal-area goal-area goal-area goal-area"
+    "keeper keeper keeper keeper"
+    "controls player player player"
+    "controls player player player";
+}
+.game-info{
+    grid-area: game-info;
+    height: 100px;
+    border: solid 2px green;
+    display: flex;
+    align-items: center;
+    
+}
+.game-status, .players-status{
+    width: 50%;
+    height: 90px;
+    border: solid 1px purple;
+    display: flex;
+}
+.game-status{
+   display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.game-status-quadro{
+    width: 400px;
+    height: 60px;
+    border: solid red 1px;
+}
+.player-one-status, .player-two-status{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.player-one-goals, .player-two-goals{
+    display: flex;
+
+}
+.player-one-s1, .player-one-s2, .player-one-s3, .player-one-s4, .player-one-s5, .player-two-s1, .player-two-s2, .player-two-s3, .player-two-s4, .player-two-s5{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin-left: 15px;
+    border: solid 2px black;
+}
+/*##############################################################################################################3333*/
+.goal-area{
+    grid-area: goal-area;
+    border: solid yellow 2px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.goal-structure{
+    width: 600px;
+    height: 220px;
+    border-top: solid 10px black;
+    border-left: solid 10px black;
+    border-right: solid 10px black;
+}
+
+
+
+
+
+
+
+
+.keeper{
+    grid-area: keeper;
+    border: solid 1px blue;
+    height: 50px;
+}
+.player{
+    grid-area: player;
+    border: solid 1px purple;
+    height: 220px;
+}
+.controls{
+    grid-area: controls;
+    border: solid 2px red;
+}
