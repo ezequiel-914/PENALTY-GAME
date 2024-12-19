@@ -73,7 +73,7 @@
 }
 .goal-structure-easy{
     width: 600px;
-    height: 220px;
+    height: 210px;
     border-top: solid 10px black;
     border-left: solid 10px black;
     border-right: solid 10px black;
@@ -99,22 +99,87 @@
     display: flex;
     justify-content: center;
 }
-
-.keeper-container-left, .keeper-container-center, .keeper-container-right{
-    width: 80px;
-    height: auto;
-    border: solid brown 1px;
-    margin: 0 20px 0 20px;
-}
 .keeper-container-center{
-    background-image: url();
+    transform: translateY(-150px);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    width: 160px;
+    height: 160px;
+    background: url('../img/arquero-parado\ .png');
+    background-position: center;
+    background-size: cover;
+    
+}
+.keeper-container-left-top{
+    transform: translateY(-160px)
+                translateX(-100px);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    height: 175px;
+    width: 255px;
+    background: url('../img/arquero-tirandose-izquierda.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+.keeper-container-left-down{
+    transform: translateY(-150px) translateX(-140px)
+    rotate(-15deg);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    height: 175px;
+    width: 255px;
+    background: url('../img/arquero-tirandose-izquierda.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+.keeper-container-right-top{
+    transform: translateY(-160px)
+                translateX(100px);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    height: 175px;
+    width: 255px;
+    background: url('../img/arquero-tirandose-derecha.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+.keeper-container-right-down{
+    transform: translateY(-150px) translateX(140px)
+    rotate(15deg);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    height: 175px;
+    width: 255px;
+    background: url('../img/arquero-tirandose-derecha.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222*/
+
+
+.area{
+    grid-area: area;
+    height: 100px;
+    width: 100%;
+    border: solid 1px green;
+    display: flex;
+    justify-content: center;
+}
+.area-left, .area-center, .area-right{
+    width: 60px;
+    height: 60px;
+    background: url(../img/ball\ .png);
+    background-position: center;
+    background-size: cover;
+    border: solid green 1px;
+    margin: 0 43px 0 43px;
 }
 
-
-
-
-
-
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222*/
 
 
 .player{
@@ -123,12 +188,7 @@
     height: 220px;
 }
 
-.area{
-    grid-area: area;
-    height: 100px;
-    width: 100%;
-    border: solid 1px green;
-}
+
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222*/
 
@@ -143,15 +203,19 @@
     width: 100%;
     height: 70%;
     display: flex;
+    justify-content: center;
+    border: solid 1px gold;
 }
 .controls-power{
     width: 30%;
     height: 100%;
     border: solid 1px green;
+    display: block;
 }
 .controls-power-label{
-    height: 100%;
+    height: 150px;
     width: 30px;
+    position: absolute;
     border: solid 3px #000;
     border-radius: 15px;
     margin-left: 40px;
@@ -165,6 +229,8 @@
     border-radius: 50%;
     border: solid 1px #000;
     background-color: #fff;
+    position: absolute;
+    bottom: 0;
 
 }
 .controls-direction{
@@ -175,20 +241,25 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    display: none;
 }
+
 .controls-direction-goal{
     width: 250px;
     height: 90px;
     border-top: solid 4px black;
     border-left: solid 4px black;
     border-right: solid 4px black;
+    margin-bottom: 32px;
 }
 .controls-direction-label{
-    width: 100%;
+    width: 300px;
     height: 30px;
     border: solid 2px black;
     border-radius: 15px;
     background-image: linear-gradient(to right, red, yellow, green, yellow, red);
+    position: absolute;
+
 }
 .controls-direction-input{
     width: 28px;
@@ -196,6 +267,8 @@
     border: solid 1px black;
     border-radius: 50%;
     background-color: #fff;
+    position: absolute;
+    right: 0;
 }
 .controls-direction-vertical{
     transform: translateY(-110px);
@@ -233,9 +306,21 @@
 .controls-shooter button{
     width: 200px;
     height: 40px;
-    font-size: 20px;
-    font-weight: bolder;
     cursor: pointer;
     border: solid 1px #000;
     border-radius: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+#power-button{
+    display: block;
+}
+#directionX-button{
+    display: none;
+}
+#directionY-button{
+    display: none;
+}
+#shoot-button{
+    display: none;
 }
