@@ -55,12 +55,29 @@
     display: flex;
 
 }
-.player-one-s1, .player-one-s2, .player-one-s3, .player-one-s4, .player-one-s5, .player-two-s1, .player-two-s2, .player-two-s3, .player-two-s4, .player-two-s5{
+.noInformation{
     height: 23px;
     width: 23px;
     border-radius: 50%;
     margin-left: 15px;
-    border: solid 3px black;
+    border: solid 3px rgb(98, 98, 98);
+    background-color: rgb(158, 156, 156);
+}
+.goalBGround{
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
+    margin-left: 15px;
+    border: solid 3px green;
+    background-color: rgba(0, 128, 0, 0.315);
+}
+.noGoalBGround{
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
+    margin-left: 15px;
+    border: solid 3px red;
+    background-color: rgba(255, 0, 0, 0.249);
 }
 /*##############################################################################################################3333*/
 .goal-area{
@@ -253,7 +270,7 @@
 }
 .controls-direction-label{
     width: 300px;
-    height: 20px;
+    height: 15px;
     border: solid 2px black;
     border-radius: 15px;
     background-image: linear-gradient(to right, red, yellow, green, yellow, red);
@@ -261,16 +278,19 @@
 
 }
 .controls-direction-input{
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
     border: solid 1px black;
     border-radius: 50%;
     background-color: #fff;
     position: absolute;
     right: 0;
+    display: flex;
+    align-items: flex-start;
+
 }
 .controls-direction-vertical{
-    transform: translateY(-120px) translateX(-6px);
+    transform: translateY(-115px) translateX(-4px);
     display: none;
     width: 20px;
     height: 130px;

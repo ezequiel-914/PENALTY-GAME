@@ -35,16 +35,16 @@ function moverIndicadorPower() {
   powerInput.style.bottom = `${posicionP}px`;
   shotForce = Math.round((posicionP / 125) * 100); 
 }
-const intervaloPower = setInterval(moverIndicadorPower, velocidad);
+var intervaloPower = setInterval(moverIndicadorPower, velocidad);
 
 // Pasar de obtener el Power a obtener el DirectionX
 document.querySelector('#power-button').addEventListener('click', () => {
   clearInterval(intervaloPower);
+  alert(`La fuerza del tiro será del ${shotForce}%!`)
   powerButton.style.display = 'none';
   powerDisplay.style.display = 'none';
   directionXButton.style.display = 'block';
   constrolsDirections.style.display = 'flex';
-  alert(`¡Seleccionaste una potencia del ${shotForce}%!`);
 });
 
 function moverDirectionX() {
@@ -63,21 +63,19 @@ function moverDirectionX() {
     //shotDirectionX = Math.round((posicionX / 300) * 100);
     shotDirectionX = posicionX;
   }
-  const intervaloDirX = setInterval(moverDirectionX, velocidad);
+  var intervaloDirX = setInterval(moverDirectionX, velocidad);
 
 // Pasar de obtener el DirectionX al DirectionY
 document.querySelector('#directionX-button').addEventListener('click', () => {
     clearInterval(intervaloDirX);
     directionXButton.style.display = 'none';
     directionYButton.style.display = 'block';
-    directionXLabel.style.height = '10px';
+    //directionXLabel.style.height = '10px';
     directionsYLabel.style.display = 'block';
     directionsYLabel.style.opacity = '90%';
-    directionXInput.style.height = '10px';
-    directionXInput.style.width = '10px';
+    //directionXInput.style.height = '10px';
+    //directionXInput.style.width = '10px';
     directionsGoal.style.margin = '0 0 11px 0';
-
-    alert(`¡Vas a patear al punto ${shotDirectionX}!`);
   });
 
 
@@ -85,58 +83,71 @@ document.querySelector('#directionX-button').addEventListener('click', () => {
     let posicionY = parseFloat(getComputedStyle(directionsYInput).bottom);
     // Decide si sube o baja
     if (subirY) {
-      posicionY += 2; 
-      if (posicionY >= 125) subirY = false; 
+      posicionY += 1; 
+      if (posicionY >= 107) subirY = false; 
     } else {
-      posicionY -= 2; 
+      posicionY -= 1; 
       if (posicionY <= 0) subirY = true; 
     }
   
     directionsYInput.style.bottom = `${posicionY}px`;
     shotDirectionY = posicionY; 
   }
-  const intervaloPositionY = setInterval(moverIndicadorY, velocidad);
+  var intervaloPositionY = setInterval(moverIndicadorY, velocidad);
   
   // Pasar de obtener el Power a obtener el DirectionX
   document.querySelector('#directionY-button').addEventListener('click', () => {
     clearInterval(intervaloPositionY);
     directionYButton.style.display = 'none';
     shotButton.style.display = 'block';
-    alert(`¡La altura de tu tiro es ${shotDirectionY}!`);
   });
 
   const defaultKeeper = {
     name: '',
-    force: 1,
+    force: 3,
     experience: 3,
-    resistence: 0
+    resistence: 2
 }
   const defaultPlayer = {
     name: '',
     force: 3,
     experience: 2,
-    resistence: 0
+    resistence: 3
 }
-
+var keeperChoiceFirst= null;
+var keeperChoiceSecond= null;
+var finalPointShot = null;
+var keeperForce = defaultKeeper.force;
+var goal= 0;
+var historyOfShot = null;
 
 const elementsForDecision = {
   
-
   keeperDecision(){
-    const keeperChoice = Math.floor(Math.random()*9)+1;
-    
-    console.log(keeperChoice);
+    keeperChoiceFirst = Math.floor(Math.random()*9)+1;
+    if(keeperChoiceFirst===1 ||  keeperChoiceFirst===4 ||  keeperChoiceFirst===7){
+      keeperChoiceSecond = keeperChoiceFirst+1;
+  } else if (keeperChoiceFirst===3 ||  keeperChoiceFirst===6 ||  keeperChoiceFirst===9){
+    keeperChoiceSecond = keeperChoiceFirst-1;
+  } else if (keeperChoiceFirst===8 ||  keeperChoiceFirst===5){
+      keeperChoiceSecond= keeperChoiceFirst - 3;
+  } else {
+    keeperChoiceSecond= keeperChoiceFirst + 3;
+  }
+    console.log(`La decision ppal del arquero fue ${keeperChoiceFirst}`);
+    console.log(`El rango de accion llega a cubrir ${keeperChoiceSecond}`);
   },
   playerDecision(){
-    const finalPower = (((defaultPlayer.force)*shotForce)/100).toFixed(1);
+    var finalPower = (((defaultPlayer.force)*shotForce)/100).toFixed(1);
     let row = null;
     let column = null;
-    let finalPointShot = null;
     let playerLuck = Math.floor(Math.random()*defaultPlayer.experience)+1;
     var keeperLuck = Math.floor(Math.random()*defaultKeeper.experience)+1;
     console.log(`A forca do tiro é ${finalPower}`)
+    
+    console.log(`La fuerza del arquero es ${keeperForce}`);
     const goalArea= {
-        row3:{
+        row1:{
           column1: 1,
           column2: 2,
           column3: 3},
@@ -144,16 +155,19 @@ const elementsForDecision = {
           column1: 4,
           column2: 5,
           column3: 6},
-        row1:{
+        row3:{
           column1: 7,
           column2: 8,
           column3: 9}
       }
+    //##################### A LA IZQUIERDA DEL PALO IZQUIERDO
     if(shotDirectionX<= 300 && shotDirectionX>= 275){
-      alert(`¡PENAL ERRADO! Pasó a la izquierda del palo izquierdo`);
+      historyOfShot = `¡PENAL ERRADO! Pasó a la izquierda del palo izquierdo`;
+      column = null;
     } else if (shotDirectionX<= 274 && shotDirectionX>= 271){
       if(keeperLuck>playerLuck){
-        alert(`¡PENAL ERRADO! Pegó en el palo y se fué`);
+        column = null;
+        historyOfShot = `¡PENAL ERRADO! Pegó en el palo y se fué`;
       } else {
         column = 1;
       }
@@ -164,29 +178,166 @@ const elementsForDecision = {
         column =2;
     } else if (shotDirectionX<= 109 && shotDirectionX>= 30){
         column =3;
+    } else if (shotDirectionX<= 29 && shotDirectionX>= 26){
+      if(keeperLuck>playerLuck){
+        column = null;
+        historyOfShot = `¡PENAL ERRADO! Pegó en el palo y se fué`;
+      } else {
+        column = 3;
+      }
+    } else if (shotDirectionX<= 25 && shotDirectionX>= 0){
+      historyOfShot= `¡PENAL ERRADO! Pasó a la derecha del palo derecho`;
+      column = null;
     }
-
-    if(shotDirectionY<=90 && shotDirectionY>= 61){
+    if(shotDirectionY<=130 && shotDirectionY>= 95){
+      historyOfShot = `¡PENAL ERRADO! Pasó arriba del travesano!!!`;
+    } else if(shotDirectionY<=94 && shotDirectionY>= 91){
+      if(keeperLuck>playerLuck){
+        historyOfShot =`¡PENAL ERRADO! Pegó en el travesano y se fué`;
+      } else { row = 1;}
+    } else if(shotDirectionY<=90 && shotDirectionY>= 61){
       row= 1;
     } else if(shotDirectionY<=60 && shotDirectionY>= 30){
       row= 2;
     } else if (shotDirectionY<=29 && shotDirectionY>= 0){
       row= 3;
     }
+    if (row=== null ||column=== null){
+      console.log(`${historyOfShot}`);
+    } else {
+      finalPointShot = goalArea[`row${row}`][`column${column}`];
+      console.log(`Tu disparo va al ${finalPointShot}`);
+      console.log(`La suerte del keeper es ${keeperLuck}. Mientras que la suerte del Player es ${playerLuck}`);
+      Decision.goalOrNoGoal();
+    }
     
+    
+}
+}
 
-    finalPointShot = goalArea[`row${row}`][`column${column}`];
-    console.log(finalPointShot);
-    console.log(`La suerte del keeper es ${keeperLuck}. Mientras que la suerte del Player es ${playerLuck}`);
-}}
 
+const Decision = {
+  
+  goalOrNoGoal(){
+        if(finalPointShot === keeperChoiceFirst || finalPointShot === keeperChoiceSecond){
+
+      let shotForceNow = parseInt(((defaultPlayer.force*shotForce)/100).toFixed(1));
+      
+      if(keeperForce>shotForceNow){
+        goal = 0;
+      } else if (keeperForce===shotForceNow){
+        if(elementsForDecision.playerDecision.keeperLuck>= elementsForDecision.playerDecision.playerLuck){
+          goal = 0;
+        } else {
+          goal = 1;
+        }
+      } else {
+          goal = 1;
+      }
+    } else if (elementsForDecision.playerDecision.row=== null ||elementsForDecision.playerDecision.column=== null) {
+      goal = 0;
+    } else { goal= 1;};
+    this.resultado();
+  },
+  resultado(){
+    console.log(goal)
+    if(goal===1){
+      alert('GOLAZOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
+      return(1);
+    } else {
+      alert('El Arquero salió beneficiado');
+      return(0);
+    }
+  }
+}
+
+const play ={
+  keeperExit: [],
+  playerExit: [],
+  goalNumber: 0,
+  defenseNumber: 0,
+  shot: 1,
+  Play(){
+    this.Game();
+    console.clear();
+    if(goal===1){
+      this.Goal();
+    }else {this.NoGoal();}
+    
+  },
+  Goal(){
+    
+    this.playerExit.push(1);
+    this.goalNumber = (this.playerExit).length;
+    console.log(`PLAYER: ${this.goalNumber}`);
+    console.log(`KEEPER: ${this.defenseNumber}`);
+    let element1 = document.querySelector(`#player-s${this.shot}`);
+    element1.classList.remove();
+    element1.classList.add('goalBGround');
+    const element2 = document.querySelector(`#keeper-s${this.shot}`);
+    element2.classList.remove();
+    element2.classList.add('noGoalBGround');
+    this.shot++;
+  },
+  NoGoal(){
+    
+    this.keeperExit.push(1);
+    this.defenseNumber= (this.keeperExit).length;
+    console.log(`PLAYER: ${this.goalNumber}`);
+    console.log(`KEEPER: ${this.defenseNumber}`);
+    let element1 = document.querySelector(`#keeper-s${this.shot}`);
+    element1.classList.remove();
+    element1.classList.add('goalBGround');
+    let element2 = document.querySelector(`#player-s${this.shot}`);
+    element2.classList.remove();
+    element2.classList.add('noGoalBGround');
+    this.shot++;
+  },
+  Game(){
+    if(this.shot=== 5 || this.defenseNumber===2 || this.goalNumber===2){
+      if(this.goalNumber>this.defenseNumber){
+        alert('############################################################################################################################################################ GANASTEEEE');
+        location.reload()
+      } else{
+        alert('############################################################################################################################################################ PERDISTE!!!! :(    ');
+        location.reload()
+      }
+    }
+  }
+}
+
+reset = {
+  resetControls(){
+    shotButton.style.display = 'none';
+    constrolsDirections.style.display = 'none';
+    directionsYLabel.style.display = 'none';
+    powerButton.style.display = 'block';
+    powerDisplay.style.display = 'block';
+    elementsForDecision.keeperDecision();
+    intervaloPositionY = setInterval(moverIndicadorY, velocidad);
+    intervaloPower = setInterval(moverIndicadorPower, velocidad);
+    intervaloDirX = setInterval(moverDirectionX, velocidad);
+    //console.clear();
+  }
+}
   elementsForDecision.keeperDecision();
   document.querySelector('#shoot-button').addEventListener('click', () => {
   elementsForDecision.playerDecision();
-});
+  play.Play();
+  reset.resetControls();
 
 });
 
-//Hasta ahora hice los calculos de si la pelota se va muy a la izuierda o si pega en el palo izquierdo. Falta el palo derecho o si se va muy a la derecha X. Y despues lo mismo pero con el travesanho Y.
 
-//Y despues hacer la comprobacion caso el arquero eliga otro punto que no sea el mismo a donde va la pelota. o si van al mismo punto hacer la comprobacion de fuerza
+
+
+
+
+
+
+
+
+
+});
+
+//Hasta ahora el sistema funciona. falta empezar a montar el play. comprobar el true/false que retorna goalOrNoGoal()
