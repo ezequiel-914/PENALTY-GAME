@@ -1,8 +1,15 @@
 *{  margin: 0;
     padding: 0;
-    box-sizing: border-box;}
+    box-sizing: border-box;
+    font-family: 'books', sans-serif;}
+
+    @font-face {
+        font-family: 'books';
+        src: url('./assets/Go around the books 2022.ttf');
+      }
 .stage{
     width: 100%;
+    background-color: #e5e5e5;
     display: grid;
     grid-gap: 10px;
     grid-template-areas:
@@ -10,8 +17,9 @@
     "goal-area goal-area goal-area goal-area"
     "keeper keeper keeper keeper"
     "area area area area"
-    "controls player player player"
-    "controls player player player";
+    "controls space space space"
+    "controls space space space"
+    "player player player player";
 }
 .game-info{
     grid-area: game-info;
@@ -38,10 +46,9 @@
     border: solid red 1px;
 }
 .player-one-name, .player-two-name{
-    text-transform: uppercase;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     margin: 0 20px 0 20px;
+    font-family: 'books', sans-serif;
 }
 .player-one-status, .player-two-status{
     width: 100%;
@@ -51,6 +58,7 @@
     justify-content: space-around;
     align-items: center;
 }
+
 .player-one-goals, .player-two-goals{
     display: flex;
 
@@ -62,7 +70,10 @@
     margin-left: 15px;
     border: solid 3px rgb(98, 98, 98);
     background-color: rgb(158, 156, 156);
+    
 }
+
+
 .goalBGround{
     height: 23px;
     width: 23px;
@@ -91,19 +102,50 @@
 .goal-structure-easy{
     width: 600px;
     height: 210px;
-    border-top: solid 10px black;
-    border-left: solid 10px black;
-    border-right: solid 10px black;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-top: solid 10px rgba(49, 49, 49, 0.777);
+    border-left: solid 10px rgba(49, 49, 49, 0.777);
+    border-right: solid 10px rgba(49, 49, 49, 0.777);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
 }
 .goal-section{
     border: solid 1px red;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#goal-section-1, #goal-section-4,#goal-section-7{
+    justify-content: flex-start;
+    padding-left: 20px;
+    opacity: 0;
+}
+#goal-section-3, #goal-section-6,#goal-section-9{
+    justify-content: flex-end;
+    padding-right: 20px;
+    opacity: 0;
+}
+#goal-section-2, #goal-section-5,#goal-section-8{
+    opacity: 0;
+}
+.goal-section-img{
+    background-image: url(../img/ball\ .png);
+    background-position: center;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
 }
 
-
+@keyframes shotBall {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-150px); opacity: 0; }
+  }
+  .animate-shot {
+    animation: shotBall 0.6s forwards;
+  }
+  
 
 
 
@@ -125,10 +167,11 @@
     background: url('../img/arquero-parado\ .png');
     background-position: center;
     background-size: cover;
+    display: block;
     
 }
 .keeper-container-left-top{
-    transform: translateY(-160px)
+    transform: translateY(-170px)
                 translateX(-100px);
     border: solid brown 1px;
     margin: 0 30px 0 30px;
@@ -175,32 +218,94 @@
     background-size: cover;
     display: none;
 }
+
+.keeper-win-left-top{
+    transform: translateY(-170px)
+                translateX(-100px);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    height: 175px;
+    width: 255px;
+    background: url('../img/keeper-win-left.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+.keeper-win-left-down{
+    transform: translateY(-150px) translateX(-140px)
+    rotate(-20deg);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    height: 175px;
+    width: 255px;
+    background: url('../img/keeper-win-left.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+.keeper-win-right-top{
+    transform: translateY(-180px)
+                translateX(165px);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    height: 175px;
+    width: 255px;
+    background: url('../img/keeper-win-right.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+.keeper-win-right-down{
+    transform: translateY(-150px) translateX(140px)
+    rotate(15deg);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    height: 175px;
+    width: 255px;
+    background: url('../img/keeper-win-right.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+.keeper-celebration{
+    transform: translateY(-170px);
+    border: solid brown 1px;
+    margin: 0 30px 0 30px;
+    width: 115px;
+    height: 190px;
+    background: url('../img/keeper-win-celebration.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222*/
 
 
 .area{
     grid-area: area;
-    height: 100px;
+    height: 65px;
     width: 100%;
     border: solid 1px green;
     display: flex;
     justify-content: center;
 }
 .area-left, .area-center, .area-right{
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     background: url(../img/ball\ .png);
     background-position: center;
     background-size: cover;
     border: solid green 1px;
     margin: 0 43px 0 43px;
+    opacity: 0;
 }
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222*/
 
 
-.player{
-    grid-area: player;
+.space{
+    grid-area: space;
     border: solid 1px purple;
     height: 220px;
 }
@@ -227,7 +332,8 @@
     width: 30%;
     height: 100%;
     border: solid 1px green;
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 .controls-power-label{
     height: 150px;
@@ -235,7 +341,6 @@
     position: absolute;
     border: solid 3px #000;
     border-radius: 15px;
-    margin-left: 40px;
     display: flex;
     justify-content: center;
     background-image: linear-gradient(to bottom, green, yellow, red);
@@ -261,7 +366,7 @@
 }
 
 .controls-direction-goal{
-    width: 250px;
+    width: 230px;
     height: 90px;
     border-top: solid 4px black;
     border-left: solid 4px black;
@@ -309,14 +414,6 @@
     bottom: 0;
 }
 
-
-
-
-
-
-
-
-
 .controls-shooter{
     border: solid 1px green;
     width: 100%;
@@ -328,6 +425,7 @@
 .controls-shooter button{
     width: 200px;
     height: 40px;
+    font-family: 'PastelCrayon', sans-serif;
     cursor: pointer;
     border: solid 1px #000;
     border-radius: 5px;
@@ -345,4 +443,71 @@
 }
 #shoot-button{
     display: none;
+}
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222*/
+
+.player{
+    grid-area: player;
+    border: solid 3px green;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.ball{
+    width: 100%;
+    height: 10px;
+    border: solid 1px red;
+    display: flex;
+    justify-content: center;
+    transform: translateY(-50px);
+
+}
+.ball-img{
+    background-image: url(../img/ball\ .png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 65px;
+    height: 65px;
+}
+.player-position{
+    width: 100%;
+    height: 10px;
+    border: solid 1px blue;
+    display: flex;
+    flex-direction: row;
+}
+.space-two{
+    width: 100%;
+    height: 100%;
+    border: solid 1px violet;
+    display: block;
+}
+.player-img-container{
+    width: 100%;
+    height: 100%;
+    border: solid salmon 1px;
+    display: flex;
+    justify-content: flex-start;
+    
+}
+.player-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 400px;
+    border: solid red 1px;
+    transform: translateY(-350px);
+}
+.shooter{
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/player-shoting.png);
+    background-position: center;
+    background-size: cover;
 }
