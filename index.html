@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penalty Game</title>
     <link rel="stylesheet" href="/assets/style.css">
-</head>  
-    <body class="stage">
+</head>
+    <body>
+        
+    
+    <div class="stage">
         <header class="game-info">
             <div class="game-status">
                 <div class="game-status-quadro">
                     <div class="player-one-status">
-                        <p class="player-one-name">keeper</p>
+                        <div class="name">
+                            <p class="player-one-name">keeper</p>
+                        </div>
                         <div class="player-one-goals">
                             <div class="noInformation" id="keeper-s1"></div>
                             <div class="noInformation" id="keeper-s2"></div>
@@ -21,7 +26,9 @@
                         </div>
                     </div>
                     <div class="player-two-status" id="playertwoname">
-                        <p class="player-two-name">player</p>
+                        <div class="name">
+                            <p class="player-two-name">player</p>
+                        </div>
                         <div class="player-two-goals">
                             <div class="noInformation" id="player-s1"></div>
                             <div class="noInformation" id="player-s2"></div>
@@ -32,7 +39,20 @@
                     </div>
                 </div>
             </div>
-            <div class="players-status"></div>
+            <div class="players-status">
+                <div class="player-status">
+                  <p>Player</p>
+                  <div class="status-bar">
+                    <div class="status-bar-fill" id="player-force-bar"></div>
+                  </div>
+                </div>
+                <div class="player-status">
+                  <p>Keeper</p>
+                  <div class="status-bar">
+                    <div class="status-bar-fill" id="keeper-force-bar"></div>
+                  </div>
+                </div>
+              </div>
         </header>
         <div class="goal-area">
             <div class="goal-structure-easy">
@@ -114,6 +134,9 @@
                     </div>
             </div>
         </div>
-        <script src="assets/script.js"></script>
+    </div>
+    <footer class="footer"><p>Developed by <a href="#">Ezequiel Rojas. 2025</a></p></footer>
+    <script src="assets/script.js"></script>
+    <div id="message-box" class="hidden"></div>
     </body>
 </html>

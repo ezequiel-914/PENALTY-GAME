@@ -155,23 +155,90 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
+  function animarJugador(esGol) {
+    const jugador = document.querySelector('.shooter');
+  
+    // Paso 1: antes del tiro
+    jugador.style.backgroundImage = "url('../img/player-before-shot.png')";
+  
+    // Paso 2: dar tiempo para renderizar
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        jugador.style.backgroundImage = "url('../img/player-shoting.png')";
+      }, 900);
+  
+      setTimeout(() => {
+        jugador.style.backgroundImage = "url('../img/player-after-shot-2.png')";
+      }, 900);
+  
+      setTimeout(() => {
+        jugador.style.backgroundImage = esGol
+          ? "url('../img/player-win-celebration.png')"
+          : "url('../img/player-loser.png')";
+      }, 900);
+  
+      setTimeout(() => {
+        jugador.style.backgroundImage = "url('../img/player-before-shot.png')";
+      }, 5000);
+    });
+  }
+
   const play = {
     goalNumber: 0,
     defenseNumber: 0,
     shot: 1,
+
+    reduceStats() {
+      const reduceForce = (currentForce, resistence) => {
+        const reduction = 1 / resistence;
+        const newForce = Math.max(0, currentForce - reduction);
+        return parseFloat(newForce.toFixed(2));
+      };
+    
+      defaultPlayer.force = reduceForce(defaultPlayer.force, defaultPlayer.resistence);
+      defaultKeeper.force = reduceForce(defaultKeeper.force, defaultKeeper.resistence);
+    
+      console.log(`Fuerza del jugador: ${defaultPlayer.force}`);
+      console.log(`Fuerza del arquero: ${defaultKeeper.force}`);
+      this.updateForceBars();
+    },
+    updateForceBars() {
+      const playerBar = document.getElementById('player-force-bar');
+      const keeperBar = document.getElementById('keeper-force-bar');
+    
+      const maxForce = 3;
+      const playerPercent = (defaultPlayer.force / maxForce) * 100;
+      const keeperPercent = (defaultKeeper.force / maxForce) * 100;
+    
+      playerBar.style.width = `${playerPercent}%`;
+      keeperBar.style.width = `${keeperPercent}%`;
+    
+      playerBar.style.backgroundColor = this.getColorByPercentage(playerPercent);
+      keeperBar.style.backgroundColor = this.getColorByPercentage(keeperPercent);
+    },
+    getColorByPercentage(percent) {
+      if (percent >= 66) return 'green';
+      if (percent >= 33) return 'yellow';
+      if (percent >= 15) return 'orange';
+      return 'red';
+    },
   
     Play() {
+      animarJugador(isGoal);
       if (isGoal) this.Goal();
       else this.NoGoal();
+      this.reduceStats();
       isGoal = 0;
       this.Game();
+      
     },
   
     Goal() {
       this.goalNumber++;
       document.querySelector(`#player-s${this.shot}`).className = 'goalBGround';
       document.querySelector(`#keeper-s${this.shot}`).className = 'noGoalBGround';
-      alert(historyOfShot);
+      mostrarMensaje(historyOfShot);
+
       this.shot++;
     },
   
@@ -179,7 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
       this.defenseNumber++;
       document.querySelector(`#keeper-s${this.shot}`).className = 'goalBGround';
       document.querySelector(`#player-s${this.shot}`).className = 'noGoalBGround';
-      alert(historyOfShot);
+      mostrarMensaje(historyOfShot);
+
       this.shot++;
     },
   
@@ -200,13 +268,25 @@ document.addEventListener('DOMContentLoaded', () => {
   
     endGame(winner) {
       setTimeout(() => {
-        if (winner === true) alert("GANASTE :)\nGracias por jugar!");
-        else if (winner === false) alert("PERDISTE :(\n¡A practicar más!");
-        else alert("EMPATE 😐\n¡Qué partido parejo!");
-        location.reload();
+        if (winner === true) mostrarMensaje("GANASTE :)\nGracias por jugar!");
+        else if (winner === false) mostrarMensaje("PERDISTE :(\n¡A practicar más!");
+        else mostrarMensaje("EMPATE 😐\n¡Qué partido parejo!");
+    
+        setTimeout(() => location.reload(), 2500);
       }, 800);
     }
+    
   };
+  
+  function mostrarMensaje(texto) {
+    const box = document.getElementById('message-box');
+    box.innerText = texto;
+    box.classList.add('show');
+  
+    setTimeout(() => {
+      box.classList.remove('show');
+    }, 2000);
+  }
   
   const reset = {
     resetControls() {
