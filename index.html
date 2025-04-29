@@ -4,10 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penalty Game</title>
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
     <body>
-        
+        <div id="setup-screen" class="setup-screen">
+            <h2>Configura tu jugador</h2>
+            <label for="player-name">Nombre:</label>
+            <input type="text" id="player-name" placeholder="Escribe tu nombre..." maxlength="10"/>
+          
+            <div class="stats-distribution">
+              <p>Puntos restantes: <span id="remaining-points">8</span></p>
+              
+              <div class="stat-control">
+                <label>Fuerza: <span id="force-value">0</span></label>
+                <button onclick="modifyStat('force', 1)">+</button>
+                <button onclick="modifyStat('force', -1)">-</button>
+              </div>
+          
+              <div class="stat-control">
+                <label>Experiencia: <span id="experience-value">0</span></label>
+                <button onclick="modifyStat('experience', 1)">+</button>
+                <button onclick="modifyStat('experience', -1)">-</button>
+              </div>
+          
+              <div class="stat-control">
+                <label>Resistencia: <span id="resistence-value">0</span></label>
+                <button onclick="modifyStat('resistence', 1)">+</button>
+                <button onclick="modifyStat('resistence', -1)">-</button>
+              </div>
+            </div>
+          
+            <button onclick="startGame()" id="start-button" disabled>Comenzar Juego</button>
+        </div>
+             
     
     <div class="stage">
         <header class="game-info">
@@ -41,7 +70,7 @@
             </div>
             <div class="players-status">
                 <div class="player-status">
-                  <p>Player</p>
+                  <p class="status-name">Player</p>
                   <div class="status-bar">
                     <div class="status-bar-fill" id="player-force-bar"></div>
                   </div>
@@ -78,7 +107,9 @@
             <div class="keeper-win-left-down"></div>
             <div class="keeper-win-right-top"></div>
             <div class="keeper-win-right-down"></div>
+            <div class="keeper-lose"></div>
             <div class="keeper-celebration"></div>
+            <div class="keeper-celebration-without-ball"></div>
         </div>
         <div class="space"></div>
         <div class="area">
@@ -128,14 +159,15 @@
             </div>
             <div class="player-position">
                 <div class="space-two"></div>
-                <div class="player-img-container">
-                    <div class="player-img">
-                        <div class="shooter"></div>
+                <div class="player-img">
+                    <div class="shooter">
+                      <img id="elemento-shooter" src="./img/player.png" alt="Jugador animado">
                     </div>
+                </div>
+                  
             </div>
         </div>
-    </div>
-    <footer class="footer"><p>Developed by <a href="#">Ezequiel Rojas. 2025</a></p></footer>
+        <footer id="footer"> hi gracias</footer>
     <script src="assets/script.js"></script>
     <div id="message-box" class="hidden"></div>
     </body>

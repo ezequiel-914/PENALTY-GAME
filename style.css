@@ -5,7 +5,7 @@
 
     @font-face {
         font-family: 'books';
-        src: url('./assets/Go around the books 2022.ttf');
+        src: url('./assets/books.ttf');
       }
 body{
     display: flex;
@@ -18,6 +18,7 @@ body{
     width: 100%;
     flex: 1;
     height: 100%;
+    background: linear-gradient(to bottom, rgb(71, 70, 70) 0%, rgb(118, 118, 118) 3%,  rgb(170, 169, 169) 7%,#e5e5e5 25%, #f1f1f1 50%, white 100%);
     background-color: #e5e5e5;
     display: grid;
     grid-gap: 10px;
@@ -34,26 +35,26 @@ body{
 .game-info{
     grid-area: game-info;
     height: 100px;
-    border: solid 2px green;
     display: flex;
     align-items: center;
+    margin-top: 20px;
+    
     
 }
 .game-status, .players-status{
-    width: 50%;
-    height: 90px;
-    border: solid 1px purple;
+    width: 100%;
+    height: 100px;
     display: flex;
 }
 .game-status{
    display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    
 }
 .game-status-quadro{
-    width: 400px;
-    height: 60px;
-    border: solid red 1px;
+    width: 500px;
+    height: 100px;
 }
 .player-one-name, .player-two-name{
     font-size: 30px;
@@ -62,7 +63,7 @@ body{
 }
 .player-one-status, .player-two-status{
     width: 100%;
-    height: 30px;
+    height: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -73,37 +74,42 @@ body{
     height: 100%;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+    text-shadow: 4px 0px 4px rgba(0, 0, 0, 0.311);
 }
 .player-one-goals, .player-two-goals{
     display: flex;
+    align-items: center;
 
 }
 .noInformation{
-    height: 23px;
-    width: 23px;
+    height: 28px;
+    width: 28px;
     border-radius: 50%;
     margin-left: 15px;
     border: solid 3px rgb(98, 98, 98);
     background-color: rgb(158, 156, 156);
-    
+    box-shadow: 4px 0px 4px rgba(57, 57, 57, 0.315);
 }
 
 
 .goalBGround{
-    height: 23px;
-    width: 23px;
+    height: 28px;
+    width: 28px;
     border-radius: 50%;
     margin-left: 15px;
     border: solid 3px green;
     background-color: rgba(0, 128, 0, 0.315);
+    box-shadow: 4px 0px 4px rgba(0, 128, 0, 0.315);
 }
 .noGoalBGround{
-    height: 23px;
-    width: 23px;
+    height: 28px;
+    width: 28px;
     border-radius: 50%;
     margin-left: 15px;
     border: solid 3px red;
     background-color: rgba(255, 0, 0, 0.249);
+    box-shadow: 4px 0px 4px rgba(255, 0, 0, 0.249);
 }
 
 
@@ -120,6 +126,11 @@ body{
     flex-direction: column;
     align-items: center;
     width: 45%;
+    padding-bottom: 15px;
+  }
+  .player-status p{
+    font-size: 40px;
+    text-shadow: 4px 0px 4px rgba(31, 29, 29, 0.249);
   }
   
   .status-bar {
@@ -130,6 +141,7 @@ body{
     background: #ccc;
     overflow: hidden;
     margin-top: 5px;
+    box-shadow: 8px 0px 8px rgba(0, 0, 0, 0.389);
   }
   .status-bar-fill {
     height: 100%;
@@ -143,13 +155,14 @@ body{
 /*##############################################################################################################3333*/
 .goal-area{
     grid-area: goal-area;
-    border: solid yellow 2px;
     height: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .goal-structure-easy{
+    background-image: url(../img/red.png);
+    background-repeat: repeat;
     width: 600px;
     height: 210px;
     border-top-left-radius: 7px;
@@ -203,14 +216,12 @@ body{
 
 .keeper{
     grid-area: keeper;
-    border: solid 1px blue;
     height: 10px;
     display: flex;
     justify-content: center;
 }
 .keeper-container-center{
-    transform: translateY(-150px);
-    border: solid brown 1px;
+    transform: translateY(-140px);
     margin: 0 30px 0 30px;
     width: 160px;
     height: 160px;
@@ -223,7 +234,6 @@ body{
 .keeper-container-left-top{
     transform: translateY(-170px)
                 translateX(-100px);
-    border: solid brown 1px;
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
@@ -235,7 +245,6 @@ body{
 .keeper-container-left-down{
     transform: translateY(-150px) translateX(-140px)
     rotate(-15deg);
-    border: solid brown 1px;
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
@@ -247,7 +256,6 @@ body{
 .keeper-container-right-top{
     transform: translateY(-160px)
                 translateX(100px);
-    border: solid brown 1px;
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
@@ -259,7 +267,6 @@ body{
 .keeper-container-right-down{
     transform: translateY(-150px) translateX(140px)
     rotate(15deg);
-    border: solid brown 1px;
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
@@ -272,7 +279,6 @@ body{
 .keeper-win-left-top{
     transform: translateY(-170px)
                 translateX(-100px);
-    border: solid brown 1px;
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
@@ -284,7 +290,6 @@ body{
 .keeper-win-left-down{
     transform: translateY(-150px) translateX(-140px)
     rotate(-20deg);
-    border: solid brown 1px;
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
@@ -296,7 +301,6 @@ body{
 .keeper-win-right-top{
     transform: translateY(-180px)
                 translateX(165px);
-    border: solid brown 1px;
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
@@ -308,7 +312,6 @@ body{
 .keeper-win-right-down{
     transform: translateY(-150px) translateX(140px)
     rotate(15deg);
-    border: solid brown 1px;
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
@@ -319,11 +322,30 @@ body{
 }
 .keeper-celebration{
     transform: translateY(-170px);
-    border: solid brown 1px;
     margin: 0 30px 0 30px;
     width: 115px;
     height: 190px;
     background: url('../img/keeper-win-celebration.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+.keeper-celebration-without-ball{
+    transform: translateY(-170px);
+    margin: 0 30px 0 30px;
+    width: 125px;
+    height: 207px;
+    background: url('../img/keeper-without-ball.png');
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+.keeper-lose{
+    transform: translateY(-170px);
+    margin: 0 30px 0 30px;
+    width: 115px;
+    height: 190px;
+    background: url('../img/keeper-lose.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -336,7 +358,6 @@ body{
     grid-area: area;
     height: 65px;
     width: 100%;
-    border: solid 1px green;
     display: flex;
     justify-content: center;
 }
@@ -346,7 +367,6 @@ body{
     background: url(../img/ball\ .png);
     background-position: center;
     background-size: cover;
-    border: solid green 1px;
     margin: 0 43px 0 43px;
     opacity: 0;
 }
@@ -356,7 +376,6 @@ body{
 
 .space{
     grid-area: space;
-    border: solid 1px purple;
     height: 220px;
 }
 
@@ -367,7 +386,6 @@ body{
 
 .controls{
     grid-area: controls;
-    border: solid 2px red;
     display: flex;
     flex-direction: column;
 }
@@ -376,14 +394,13 @@ body{
     height: 70%;
     display: flex;
     justify-content: center;
-    border: solid 1px gold;
 }
 .controls-power{
     width: 30%;
     height: 100%;
-    border: solid 1px green;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .controls-power-label{
     height: 150px;
@@ -407,7 +424,6 @@ body{
 .controls-direction{
     width: 70%;
     height: 100%;
-    border: solid blue 1px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -465,7 +481,6 @@ body{
 }
 
 .controls-shooter{
-    border: solid 1px green;
     width: 100%;
     height: 30%;
     display: flex;
@@ -473,14 +488,16 @@ body{
     align-items: center;
 }
 .controls-shooter button{
-    width: 200px;
-    height: 40px;
+    width: 300px;
+    height: 80px;
     font-family: 'PastelCrayon', sans-serif;
     cursor: pointer;
-    border: solid 1px #000;
-    border-radius: 5px;
-    font-size: 20px;
-    font-weight: bolder;
+    border: solid 2px #00000080;
+    border-radius: 7px;
+    font-size: 40px;
+    font-weight: 300;
+    text-shadow: #333 6px 0px 6px;
+    box-shadow: #23232384 6px 6px 6px;;
 }
 #power-button{
     display: block;
@@ -501,16 +518,17 @@ body{
 .player{
     grid-area: player;
     border: solid 1px green;
-    height: 1px;
+    height: 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
 }
 .ball{
-    width: 100%;
-    height: 10px;
-    border: solid 1px red;
+    width: 100px;
+    height: 20px;
+    border: solid 1px goldenrod;
     display: flex;
     justify-content: center;
     transform: translateY(-50px);
@@ -526,57 +544,72 @@ body{
 }
 .player-position{
     width: 100%;
-    height: 10px;
+    height: 20px;
     border: solid 1px blue;
     display: flex;
     flex-direction: row;
 }
 .space-two{
-    width: 100%;
+    width: 50%;
     height: 100%;
     border: solid 1px violet;
     display: block;
 }
-.player-img-container{
-    width: 100%;
-    height: 100%;
-    border: solid salmon 1px;
+
+/*.player-img{
     display: flex;
-    justify-content: flex-start;
-    
-}
-.player-img{
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 450px;
+    border: solid blue 1px;
+    transform: translateY(-380px)
+            translateX(50px);
+}*/
+.player-img {
+    overflow: hidden;
+    width: 218px; /* tamaño del "viewport" */
+    height: 452px;
+    border: solid blue 1px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
-    height: 400px;
-    border: solid red 1px;
-    transform: translateY(-350px);
-}
-.shooter{
-    width: 100%;
-    height: 100%;
-    background-image: url(../img/player-before-shot.png);
-    background-position: center;
-    background-size: cover;
+    position: relative;
+    transform: translateY(-390px)
+               translateX(50px);
 }
 
-
-
-/*#########################################3*/
-
-.footer{
-    width: 100%;
-    height: 50px;
-    border: solid 3px gray;
+.shooter {
+    width: 600px;
+    height: 450px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    transition: transform 0.3s ease;
 }
-.footer p {
-    width: 100%;
+
+.shooter img {
+    width: 1469px;
+    height: 450px;
+    object-fit: contain;
+    transform: translateX(229px);
+    /* Valores del sprite-player:
+    before: translateX(229px);
+    shoting: translateX(23px);
+    after-shot: translateX(-190px);
+    Goal: translateX(-573px);
+    No Goal: translateX(-375px); */
+
+}
+
+
+
+
+
+
+/*#################  aqui va el footer  ########################3*/
+
+#footer{
+    grid-area: footer;
 }
 
 /*#########################################3*/
@@ -606,5 +639,50 @@ body{
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { opacity: 0; }
+  }
+/*###################################################*/
+
+.setup-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 20px;
+    font-size: 20px;
+    gap: 20px;
+  }
+  
+  .setup-screen input {
+    font-size: 18px;
+    padding: 5px 10px;
+  }
+  
+  .stats-distribution {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .stat-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .stat-control button {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  #start-button{
+    width: 250px;
+    height: 50px;
   }
   

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 // ##############    RECOLECTAR INFORMACIONES DEL DISPARO  (parte funcional) ######
 document.addEventListener('DOMContentLoaded', () => {
   const powerInput = document.querySelector('.controls-power-input');
@@ -20,15 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const directionsGoal = document.querySelector('.controls-direction-goal');
   const shotButton = document.querySelector('#shoot-button');
 
-
-
-  document.getElementById('player-name').addEventListener('input', () => {
-    const nameFilled = document.getElementById('player-name').value.trim() !== '';
-    const statsSum = playerStats.force + playerStats.experience + playerStats.resistence;
-    document.getElementById('start-button').disabled = !(nameFilled && statsSum === 8);
-  });
-  
-
   // ##############    RECOLECTAR DATOS PARA LA ANIMACIÓN (parte visual)  ######
   
   let subirP = true;
@@ -41,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let shotDirectionY = 0;
   let powerMovementSpeed = null;
 
-  
+  let fueraDePorteria = (finalPointShot === null);
 
   let isGoal = 0;
   let historyOfShot = '';
@@ -109,60 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   let keeperMainChoice = null;
   let keeperSecondChoice = null;
-
-  // ####################### CONFIGURACIÓN INICIAL DEL JUGADOR #############################
-let playerStats = { force: 0, experience: 0, resistence: 0 };
-let remainingPoints = 8;
-
-function modifyStat(stat, delta) {
-  const total = playerStats.force + playerStats.experience + playerStats.resistence;
-  if (delta === 1 && total >= 8) return;
-  if (delta === -1 && playerStats[stat] === 0) return;
-
-  playerStats[stat] += delta;
-  document.getElementById(`${stat}-value`).innerText = playerStats[stat];
-  document.getElementById('remaining-points').innerText = 8 - (total + delta);
-
-  const nameFilled = document.getElementById('player-name').value.trim() !== '';
-  document.getElementById('start-button').disabled = ((playerStats.force + playerStats.experience + playerStats.resistence) !== 8 || !nameFilled);
-}
-
-function startGame() {
-  defaultPlayer.force = playerStats.force;
-  defaultPlayer.experience = playerStats.experience;
-  defaultPlayer.resistence = playerStats.resistence;
-
-  const name = document.getElementById('player-name').value.trim();
-  document.querySelector('.player-two-name').innerText = name;
-  document.querySelector('.status-name').innerText = name;
-
-  // Distribuir aleatoriamente los 8 puntos del arquero
-  const stats = ['force', 'experience', 'resistence'];
-  let keeperStats = { force: 0, experience: 0, resistence: 0 };
-  let points = 8;
-  while (points > 0) {
-    const stat = stats[Math.floor(Math.random() * 3)];
-    keeperStats[stat]++;
-    points--;
-  }
-  defaultKeeper.force = keeperStats.force;
-  defaultKeeper.experience = keeperStats.experience;
-  defaultKeeper.resistence = keeperStats.resistence;
-
-  // Ocultar la pantalla de configuración
-  document.getElementById('setup-screen').style.display = 'none';
-}
-
-document.getElementById('player-name').addEventListener('input', () => {
-  const nameFilled = document.getElementById('player-name').value.trim() !== '';
-  const statsSum = playerStats.force + playerStats.experience + playerStats.resistence;
-  document.getElementById('start-button').disabled = !(nameFilled && statsSum === 8);
-});
-
   
   const elementsForDecision = {
-    
-    
     keeperDecision() {
       keeperMainChoice = Math.floor(Math.random() * 9) + 1;
       if ([1, 4, 7].includes(keeperMainChoice)) keeperSecondChoice = keeperMainChoice + 1;
@@ -278,26 +210,16 @@ document.getElementById('player-name').addEventListener('input', () => {
     }
   
     if (esGol) {
-      // 🎯 Si es GOL (el arquero pierde pero se tira)
-      if ([1, 2].includes(finalPointShot)) keeperDiv = document.querySelector('.keeper-container-left-top');
-      else if (finalPointShot === 4) keeperDiv = document.querySelector('.keeper-container-left-down');
-      else if ([8, 9].includes(finalPointShot)) keeperDiv = document.querySelector('.keeper-container-right-top');
-      else if (finalPointShot === 6) keeperDiv = document.querySelector('.keeper-container-right-down');
-      else keeperDiv = document.querySelector('.keeper-container-center');
-      
+      // 🎯 Si es GOL (el arquero pierde)
+      keeperDiv = document.querySelector('.keeper-lose');
       if (keeperDiv) keeperDiv.style.display = 'block';
-    
+  
       setTimeout(() => {
         keeperDiv.style.display = 'none';
-        document.querySelector('.keeper-lose').style.display = 'block'; // mostrar al arquero derrotado
-      }, 1000);
-    
-      setTimeout(() => {
-        document.querySelector('.keeper-lose').style.display = 'none';
         document.querySelector('.keeper-container-center').style.display = 'block';
-      }, 2500);
-    }
-     else {
+      }, 1500);
+  
+    } else {
       // 🎯 Si ataja el disparo
       if ([1, 2].includes(finalPointShot)) keeperDiv = document.querySelector('.keeper-win-left-top');
       else if (finalPointShot === 4) keeperDiv = document.querySelector('.keeper-win-left-down');
@@ -362,11 +284,11 @@ document.getElementById('player-name').addEventListener('input', () => {
       return 'red';
     },
   
-    Play(fueraDePorteria) {
+    Play() {
       animarJugador(isGoal);
-      animarKeeper(finalPointShot, isGoal, fueraDePorteria);
+      animarKeeper(finalPointShot, !isGoal, fueraDePorteria);
+
       if (isGoal) this.Goal();
-      
       else this.NoGoal();
       this.reduceStats();
       isGoal = 0;
@@ -393,10 +315,6 @@ document.getElementById('player-name').addEventListener('input', () => {
     },
   
     Game() {
-      if (defaultPlayer.force <= 0) {
-        return this.endGame("noEnergy");
-      }
-      
       const remainingShots = 5 - (this.shot - 1);
       const maxPlayerGoals = this.goalNumber + remainingShots;
       const maxKeeperGoals = this.defenseNumber + remainingShots;
@@ -413,15 +331,9 @@ document.getElementById('player-name').addEventListener('input', () => {
   
     endGame(winner) {
       setTimeout(() => {
-        if (winner === true) {
-          mostrarMensaje("GANASTE :)\nGracias por jugar!");
-        } else if (winner === false) {
-          mostrarMensaje("PERDISTE :(\n¡A practicar más!");
-        } else if (winner === "noEnergy") {
-          mostrarMensaje("TE QUEDASTE SIN ENERGÍA 😵\n¡Intentá ser más eficiente!");
-        } else {
-          mostrarMensaje("EMPATE 😐\n¡Qué partido parejo!");
-        }
+        if (winner === true) mostrarMensaje("GANASTE :)\nGracias por jugar!");
+        else if (winner === false) mostrarMensaje("PERDISTE :(\n¡A practicar más!");
+        else mostrarMensaje("EMPATE 😐\n¡Qué partido parejo!");
     
         setTimeout(() => location.reload(), 4500);
       }, 1000);
@@ -457,20 +369,10 @@ document.getElementById('player-name').addEventListener('input', () => {
   
   shotButton.addEventListener('click', () => {
     elementsForDecision.calcularPosicion();
-  
-    const fueraDePorteria = (finalPointShot === null); // ✅ acá sí está correcto
-  
-    if (!fueraDePorteria) {
-      elementsForDecision.goalOrNoGoal();
-    }
-  
-    play.Play(fueraDePorteria); // ✅ pasamos este valor al método Play
+    if (finalPointShot !== null) elementsForDecision.goalOrNoGoal();
+    play.Play();
     reset.resetControls();
   });
   
-  window.modifyStat = modifyStat;
-  window.startGame = startGame;
-
-
-
   });
+  
