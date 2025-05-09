@@ -13,6 +13,7 @@ body{
     align-items: center;
     min-height: 100vh;
     width: 100vw;
+    
 }
 .stage{
     width: 100%;
@@ -30,11 +31,12 @@ body{
     "controls space space space"
     "controls space space space"
     "player player player player"
+    "footer footer footer footer"
     ;
 }
 .game-info{
     grid-area: game-info;
-    height: 100px;
+    height: 70px;
     display: flex;
     align-items: center;
     margin-top: 20px;
@@ -43,7 +45,7 @@ body{
 }
 .game-status, .players-status{
     width: 100%;
-    height: 100px;
+    height: 70px;
     display: flex;
 }
 .game-status{
@@ -159,6 +161,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .goal-structure-easy{
     background-image: url(../img/red.png);
@@ -517,7 +520,6 @@ body{
 
 .player{
     grid-area: player;
-    border: solid 1px green;
     height: 20px;
     width: 100%;
     display: flex;
@@ -528,7 +530,6 @@ body{
 .ball{
     width: 100px;
     height: 20px;
-    border: solid 1px goldenrod;
     display: flex;
     justify-content: center;
     transform: translateY(-50px);
@@ -545,14 +546,12 @@ body{
 .player-position{
     width: 100%;
     height: 20px;
-    border: solid 1px blue;
     display: flex;
     flex-direction: row;
 }
 .space-two{
     width: 50%;
     height: 100%;
-    border: solid 1px violet;
     display: block;
 }
 
@@ -571,7 +570,6 @@ body{
     overflow: hidden;
     width: 218px; /* tamaño del "viewport" */
     height: 452px;
-    border: solid blue 1px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -610,8 +608,91 @@ body{
 
 #footer{
     grid-area: footer;
+    width: 100%;
+    height: 125px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #202020;
+    color: white;
 }
 
+.game-name{
+    width: 350px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+}
+.game-name p{
+    font-size: 25px;
+    padding-bottom: 3px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.377);
+}
+.game-name img{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.social-media{
+    width: 350px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.instagram-icon{
+    width: 35px;
+    height: 35px;
+    margin: 0px 5px 0px 5px;
+}
+.instagram-icon:hover{
+    transform: scale(1.0);
+}
+.github-icon{
+    width: 25px;
+    height: 25px;
+    margin: 0px 5px 0px 5px;
+}
+.linkedin-icon{
+    width: 35px;
+    height: 35px;
+    margin: 0px 5px 0px 5px;
+}
+
+
+
+
+
+
+
+.developed-by{
+    width: 550px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+.developed-by-title{
+    font-size: 10px;
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
+.Ezequiel-Rojas{
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+.aclaration{
+    font-size: 10px;
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
 /*#########################################3*/
 
 #message-box {
