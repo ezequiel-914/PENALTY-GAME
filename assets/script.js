@@ -134,7 +134,8 @@ function startGame() {
 
   const name = document.getElementById('player-name').value.trim();
   document.querySelector('.player-two-name').innerText = name;
-  document.querySelector('.status-name').innerText = name;
+  document.querySelector('.status-namee3mjkm,/=m
+    modifyStatm').innerText = name;
 
   // Distribuir aleatoriamente los 8 puntos del arquero
   const stats = ['force', 'experience', 'resistence'];

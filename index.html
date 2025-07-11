@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penalty Game</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style_responsive.css">
 </head>
-    <body>
+<body>
         <div id="setup-screen" class="setup-screen">
             <h2>Configura tu jugador</h2>
             <label for="player-name">Nombre:</label>
@@ -39,132 +40,139 @@
              
     
     <div class="stage">
-        <header class="game-info">
-            <div class="game-status">
-                <div class="game-status-quadro">
-                    <div class="player-one-status">
-                        <div class="name">
-                            <p class="player-one-name">keeper</p>
+        <div class="stage-top">
+            <header class="game-info">
+                <div class="game-status">
+                    <div class="game-status-quadro">
+                        <div class="player-one-status">
+                            <div class="name">
+                                <p class="player-one-name">keeper</p>
+                            </div>
+                            <div class="player-one-goals">
+                                <div class="noInformation" id="keeper-s1"></div>
+                                <div class="noInformation" id="keeper-s2"></div>
+                                <div class="noInformation" id="keeper-s3"></div>
+                                <div class="noInformation" id="keeper-s4"></div>
+                                <div class="noInformation" id="keeper-s5"></div>
+                            </div>
                         </div>
-                        <div class="player-one-goals">
-                            <div class="noInformation" id="keeper-s1"></div>
-                            <div class="noInformation" id="keeper-s2"></div>
-                            <div class="noInformation" id="keeper-s3"></div>
-                            <div class="noInformation" id="keeper-s4"></div>
-                            <div class="noInformation" id="keeper-s5"></div>
-                        </div>
-                    </div>
-                    <div class="player-two-status" id="playertwoname">
-                        <div class="name">
-                            <p class="player-two-name">player</p>
-                        </div>
-                        <div class="player-two-goals">
-                            <div class="noInformation" id="player-s1"></div>
-                            <div class="noInformation" id="player-s2"></div>
-                            <div class="noInformation" id="player-s3"></div>
-                            <div class="noInformation" id="player-s4"></div>
-                            <div class="noInformation" id="player-s5"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="players-status">
-                <div class="player-status">
-                  <p class="status-name">Player</p>
-                  <div class="status-bar">
-                    <div class="status-bar-fill" id="player-force-bar"></div>
-                  </div>
-                </div>
-                <div class="player-status">
-                  <p>Keeper</p>
-                  <div class="status-bar">
-                    <div class="status-bar-fill" id="keeper-force-bar"></div>
-                  </div>
-                </div>
-              </div>
-        </header>
-        <div class="goal-area">
-            <div class="goal-structure-easy">
-                <div class="goal-section" id="goal-section-1"><div class="goal-section-img"></div></div>
-                <div class="goal-section" id="goal-section-2"><div class="goal-section-img"></div></div>
-                <div class="goal-section" id="goal-section-3"><div class="goal-section-img"></div></div>
-                <div class="goal-section" id="goal-section-4"><div class="goal-section-img"></div></div>
-                <div class="goal-section" id="goal-section-5"><div class="goal-section-img"></div></div>
-                <div class="goal-section" id="goal-section-6"><div class="goal-section-img"></div></div>
-                <div class="goal-section" id="goal-section-7"><div class="goal-section-img"></div></div>
-                <div class="goal-section" id="goal-section-8"><div class="goal-section-img"></div></div>
-                <div class="goal-section" id="goal-section-9"><div class="goal-section-img"></div></div>
-                
-            </div>
-        </div>
-        <div class="keeper">
-            <div class="keeper-container-left-top"></div>
-            <div class="keeper-container-left-down"></div>
-            <div class="keeper-container-center"></div>
-            <div class="keeper-container-right-top"></div>
-            <div class="keeper-container-right-down"> </div>
-            <div class="keeper-win-left-top"></div>
-            <div class="keeper-win-left-down"></div>
-            <div class="keeper-win-right-top"></div>
-            <div class="keeper-win-right-down"></div>
-            <div class="keeper-lose"></div>
-            <div class="keeper-celebration"></div>
-            <div class="keeper-celebration-without-ball"></div>
-        </div>
-        <div class="space"></div>
-        <div class="area">
-            <div class="area-left"></div>
-            <div class="area-center"></div>
-            <div class="area-right"></div>
-        </div>
-        <div class="controls">
-            <div class="controls-buttons">
-                <div class="controls-power">
-                    <div class="controls-power-label">
-                        <div class="controls-power-input"></div>
-                    </div>
-                </div>
-                <div class="controls-direction">
-                    <div class="controls-direction-goal"></div>
-                    <div class="controls-direction-label">
-                        <div class="controls-direction-input">
-                            <div class="controls-direction-vertical">
-                                <div class="controls-direction-vertical-input"></div>
+                        <div class="player-two-status" id="playertwoname">
+                            <div class="name">
+                                <p class="player-two-name">player</p>
+                            </div>
+                            <div class="player-two-goals">
+                                <div class="noInformation" id="player-s1"></div>
+                                <div class="noInformation" id="player-s2"></div>
+                                <div class="noInformation" id="player-s3"></div>
+                                <div class="noInformation" id="player-s4"></div>
+                                <div class="noInformation" id="player-s5"></div>
                             </div>
                         </div>
                     </div>
-
-                    
+                </div>
+                <div class="players-status">
+                    <div class="player-status">
+                      <p class="status-name">Player</p>
+                      <div class="status-bar">
+                        <div class="status-bar-fill" id="player-force-bar"></div>
+                      </div>
+                    </div>
+                    <div class="player-status">
+                      <p>Keeper</p>
+                      <div class="status-bar">
+                        <div class="status-bar-fill" id="keeper-force-bar"></div>
+                      </div>
+                    </div>
+                  </div>
+            </header>
+            <div class="goal-area">
+                <div class="goal-structure-easy">
+                    <div class="goal-section" id="goal-section-1"><div class="goal-section-img"></div></div>
+                    <div class="goal-section" id="goal-section-2"><div class="goal-section-img"></div></div>
+                    <div class="goal-section" id="goal-section-3"><div class="goal-section-img"></div></div>
+                    <div class="goal-section" id="goal-section-4"><div class="goal-section-img"></div></div>
+                    <div class="goal-section" id="goal-section-5"><div class="goal-section-img"></div></div>
+                    <div class="goal-section" id="goal-section-6"><div class="goal-section-img"></div></div>
+                    <div class="goal-section" id="goal-section-7"><div class="goal-section-img"></div></div>
+                    <div class="goal-section" id="goal-section-8"><div class="goal-section-img"></div></div>
+                    <div class="goal-section" id="goal-section-9"><div class="goal-section-img"></div></div>
+            
                 </div>
             </div>
-            <div class="controls-shooter" id="controls-shooter">
-                <button id="power-button">
-                    <p>POWER!</p>
-                </button>
-                <button id="directionX-button">
-                    <p>WIDTHER!</p>
-                </button>
-                <button id="directionY-button">
-                    <p>HEIGTHER!</p>
-                </button>
-                <button id="shoot-button">
-                    <p>SHOT!</p>
-                </button>
-            </div>
-
+            
         </div>
-        <div class="player">
-            <div class="ball">
-                <div class="ball-img"></div>
+
+
+        <div class="stage-bottom">
+            <div class="keeper">
+                <div class="keeper-container-left-top"></div>
+                <div class="keeper-container-left-down"></div>
+                <div class="keeper-container-center"></div>
+                <div class="keeper-container-right-top"></div>
+                <div class="keeper-container-right-down"> </div>
+                <div class="keeper-win-left-top"></div>
+                <div class="keeper-win-left-down"></div>
+                <div class="keeper-win-right-top"></div>
+                <div class="keeper-win-right-down"></div>
+                <div class="keeper-lose"></div>
+                <div class="keeper-celebration"></div>
+                <div class="keeper-celebration-without-ball"></div>
             </div>
-            <div class="player-position">
-                <div class="space-two"></div>
-                <div class="player-img">
-                    <div class="shooter">
-                      <img id="elemento-shooter" src="./img/player.png" alt="Jugador animado">
+            <div class="space">
+
+            </div>
+            <div class="area">
+                <div class="area-left"></div>
+                <div class="area-center"></div>
+                <div class="area-right"></div>
+            </div>
+            <div class="controls">
+                <div class="controls-buttons">
+                    <div class="controls-power">
+                        <div class="controls-power-label">
+                            <div class="controls-power-input"></div>
+                        </div>
+                    </div>
+                    <div class="controls-direction">
+                        <div class="controls-direction-goal"></div>
+                        <div class="controls-direction-label">
+                            <div class="controls-direction-input">
+                                <div class="controls-direction-vertical">
+                                    <div class="controls-direction-vertical-input"></div>
+                                </div>
+                            </div>
+                        </div>
+            
                     </div>
                 </div>
-                  
+                <div class="controls-shooter" id="controls-shooter">
+                    <button id="power-button">
+                        <p>POWER!</p>
+                    </button>
+                    <button id="directionX-button">
+                        <p>WIDTHER!</p>
+                    </button>
+                    <button id="directionY-button">
+                        <p>HEIGTHER!</p>
+                    </button>
+                    <button id="shoot-button">
+                        <p>SHOT!</p>
+                    </button>
+                </div>
+            </div>
+            <div class="player">
+                <div class="ball">
+                    <div class="ball-img"></div>
+                </div>
+                <div class="player-position">
+                    <div class="space-two"></div>
+                    <div class="player-img">
+                        <div class="shooter">
+                          <img id="elemento-shooter" src="./img/player.png" alt="Jugador animado">
+                        </div>
+                    </div>
+            
+                </div>
             </div>
         </div>
         
@@ -182,13 +190,19 @@
                 <p class="aclaration">*The distribution of the keeper's points was random.</p>
             </div>
             <div class="social-media">
+                <a href="https://www.instagram.com/rojasezequiel.914/" target="_blank">
                 <img class="instagram-icon" src="img/instagram-icon-white.png" alt="instagram-icon">
+                </a>
+                <a href="https://github.com/ezequiel-914" target="_blank">
                 <img class="github-icon" src="img/github-icon-white.png" alt="github-icon">
+                </a>
+                <a href="https://www.linkedin.com/in/ezequiel-rojas-10aaa8237/" target="_blank" rel="noopener noreferrer">
                 <img class="linkedin-icon" src="img/linkedin-icon-white.png" alt="linkedin-icon">
+                </a>
             </div>
             
     </footer>
     <script src="assets/script.js"></script>
     <div id="message-box" class="hidden"></div>
-    </body>
+</body>
 </html>
