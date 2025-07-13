@@ -136,7 +136,7 @@ function startGame() {
   document.querySelector('.player-two-name').innerText = name;
   document.querySelector('.status-modifyStat').innerText = name;
 
-  // Distribuir aleatoriamente los 8 puntos del arquero
+  // Puntos del arquero
   const stats = ['force', 'experience', 'resistence'];
   let keeperStats = { force: 0, experience: 0, resistence: 0 };
   let points = 8;
@@ -148,8 +148,6 @@ function startGame() {
   defaultKeeper.force = keeperStats.force;
   defaultKeeper.experience = keeperStats.experience;
   defaultKeeper.resistence = keeperStats.resistence;
-
-  // Ocultar la pantalla de configuración
   document.getElementById('setup-screen').style.display = 'none';
 }
 
