@@ -134,7 +134,7 @@ function startGame() {
 
   const name = document.getElementById('player-name').value.trim();
   document.querySelector('.player-two-name').innerText = name;
-  document.querySelector('.status-modifyStat').innerText = name;
+  //document.querySelector('.status-modifyStat').innerText = name;
 
   // Puntos del arquero
   const stats = ['force', 'experience', 'resistence'];
