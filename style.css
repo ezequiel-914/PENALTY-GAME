@@ -177,7 +177,7 @@ body{
     
 }
 .goal-structure-easy{
-    background-image: url(../img/red.png);
+    background-image: url('img/red.png');
     background-repeat: repeat;
     width: 600px;
     height: 220px;
@@ -210,7 +210,7 @@ body{
     opacity: 0;
 }
 .goal-section-img{
-    background-image: url(../img/ball\ .png);
+    background-image: url('img/ball.png');
     background-position: center;
     background-size: cover;
     width: 40px;
@@ -241,7 +241,7 @@ body{
     margin: 0 30px 0 30px;
     width: 160px;
     height: 160px;
-    background: url('../img/arquero-parado.png');
+    background: url('img/keeper.png');
     background-position: center;
     background-size: cover;
     display: block;
@@ -253,7 +253,7 @@ body{
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
-    background: url('../img/arquero-tirandose-izquierda.png');
+    background: url('img/arquero-tirandose-izquierda.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -264,7 +264,7 @@ body{
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
-    background: url('../img/arquero-tirandose-izquierda.png');
+    background: url('img/arquero-tirandose-izquierda.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -275,7 +275,7 @@ body{
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
-    background: url('../img/arquero-tirandose-derecha.png');
+    background: url('img/arquero-tirandose-derecha.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -286,7 +286,7 @@ body{
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
-    background: url('../img/arquero-tirandose-derecha.png');
+    background: url('img/arquero-tirandose-derecha.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -298,7 +298,7 @@ body{
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
-    background: url('../img/keeper-win-left.png');
+    background: url('img/keeper-win-left.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -309,7 +309,7 @@ body{
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
-    background: url('../img/keeper-win-left.png');
+    background: url('img/keeper-win-left.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -320,7 +320,7 @@ body{
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
-    background: url('../img/keeper-win-right.png');
+    background: url('img/keeper-win-right.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -331,7 +331,7 @@ body{
     margin: 0 30px 0 30px;
     height: 175px;
     width: 255px;
-    background: url('../img/keeper-win-right.png');
+    background: url('img/keeper-win-right.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -341,7 +341,7 @@ body{
     margin: 0 30px 0 30px;
     width: 115px;
     height: 190px;
-    background: url('../img/keeper-win-celebration.png');
+    background: url('img/keeper-win-celebration.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -352,7 +352,7 @@ body{
     margin: 0 30px 0 30px;
     width: 125px;
     height: 207px;
-    background: url('../img/keeper-without-ball.png');
+    background: url('img/keeper-without-ball.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -362,7 +362,7 @@ body{
     margin: 0 30px 0 30px;
     width: 115px;
     height: 190px;
-    background: url('../img/keeper-lose.png');
+    background: url('img/keeper-lose.png');
     background-position: center;
     background-size: cover;
     display: none;
@@ -381,7 +381,7 @@ body{
 .area-left, .area-center, .area-right{
     width: 55px;
     height: 55px;
-    background: url(../img/ball\ .png);
+    background: url('img/ball-image.png');
     background-position: center;
     background-size: cover;
     margin: 0 43px 0 43px;
