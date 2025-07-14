@@ -50,8 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const frasesGoles = ['¡GOOOOOAL!', '¡HE SMASHED IT IN!', '¡WHAT A FINISH!'];
   
   function moverIndicadorPower() {
+    let nervios;
+    if (playerStats.experience <3){
+      nervios = 3;
+      console.log(nervios)
+    } else{ 
+      nervios = 2;
+      console.log(nervios);}
     let posicionP = parseFloat(getComputedStyle(powerInput).bottom);
-    subirP ? posicionP += 1 : posicionP -= 1;
+    subirP ? posicionP += nervios : posicionP -= nervios;
     if (posicionP >= 125) subirP = false;
     if (posicionP <= 0) subirP = true;
     powerInput.style.bottom = `${posicionP}px`;
@@ -66,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     powerDisplay.style.display = 'none';
     directionXButton.style.display = 'block';
     constrolsDirections.style.display = 'flex';
-    powerMovementSpeed = shotForce <= 50 ? 1 : 2;
+    powerMovementSpeed = shotForce <= 50 ? 1 : 3;
   });
   
   function moverDirectionX() {
