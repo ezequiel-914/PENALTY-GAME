@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let historyOfShot = '';
   let finalPointShot = null;
   
-  const frasesGoles = ['¡GOOOOOL!', '¡Le rompió el arco!', '¡Impresionante definición!'];
+  const frasesGoles = ['¡GOOOOOAL!', '¡HE SMASHED IT IN!', '¡WHAT A FINISH!'];
   
   function moverIndicadorPower() {
     let posicionP = parseFloat(getComputedStyle(powerInput).bottom);
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   powerButton.addEventListener('click', () => {
     clearInterval(intervaloPower);
-    alert(`La fuerza del tiro será del ${shotForce}%!`);
+    alert(`Shot power will be ${shotForce}%!`);
     powerButton.style.display = 'none';
     powerDisplay.style.display = 'none';
     directionXButton.style.display = 'block';
@@ -175,17 +175,17 @@ document.getElementById('player-name').addEventListener('input', () => {
       let keeperLuck = Math.floor(Math.random() * defaultKeeper.experience) + 1;
   
       if (shotDirectionX >= 255) {
-        historyOfShot = '¡PENAL ERRADO! Pasó a la izquierda del palo';
+        historyOfShot = 'MISSED SHOT! Went left of the post';
       } else if (shotDirectionX >= 251) {
         column = keeperLuck > playerLuck ? null : 1;
       } else if (shotDirectionX >= 191) column = 1;
       else if (shotDirectionX >= 110) column = 2;
       else if (shotDirectionX >= 40) column = 3;
       else if (shotDirectionX >= 34) column = keeperLuck > playerLuck ? null : 3;
-      else historyOfShot = '¡PENAL ERRADO! Pasó a la derecha del palo';
+      else historyOfShot = 'MISSED SHOT! Went right of the post';
   
       if (shotDirectionY >= 95) {
-        historyOfShot = '¡PENAL ERRADO! Pasó arriba del travesaño';
+        historyOfShot = 'MISSED SHOT! Went over the crossbar';
       } else if (shotDirectionY >= 91) row = keeperLuck > playerLuck ? null : 1;
       else if (shotDirectionY >= 61) row = 1;
       else if (shotDirectionY >= 30) row = 2;
@@ -209,7 +209,7 @@ document.getElementById('player-name').addEventListener('input', () => {
       } else {
         isGoal = 1;
       }
-      historyOfShot = isGoal ? frasesGoles[Math.floor(Math.random() * frasesGoles.length)] : '¡Erraste el penal!';
+      historyOfShot = isGoal ? frasesGoles[Math.floor(Math.random() * frasesGoles.length)] : 'MISSED SHOT!';
     }
   };
   
@@ -287,7 +287,7 @@ document.getElementById('player-name').addEventListener('input', () => {
     
       setTimeout(() => {
         keeperDiv.style.display = 'none';
-        document.querySelector('.keeper-lose').style.display = 'block'; // mostrar al arquero derrotado
+        document.querySelector('.keeper-lose').style.display = 'block';
       }, 1000);
     
       setTimeout(() => {
@@ -296,7 +296,7 @@ document.getElementById('player-name').addEventListener('input', () => {
       }, 2500);
     }
      else {
-      // 🎯 Si ataja el disparo
+      // Si ataja 
       if ([1, 2].includes(finalPointShot)) keeperDiv = document.querySelector('.keeper-win-left-top');
       else if (finalPointShot === 4) keeperDiv = document.querySelector('.keeper-win-left-down');
       else if ([8, 9].includes(finalPointShot)) keeperDiv = document.querySelector('.keeper-win-right-top');
@@ -334,9 +334,6 @@ document.getElementById('player-name').addEventListener('input', () => {
     
       defaultPlayer.force = reduceForce(defaultPlayer.force, defaultPlayer.resistence);
       defaultKeeper.force = reduceForce(defaultKeeper.force, defaultKeeper.resistence);
-    
-      console.log(`Fuerza del jugador: ${defaultPlayer.force}`);
-      console.log(`Fuerza del arquero: ${defaultKeeper.force}`);
       this.updateForceBars();
     },
     updateForceBars() {
@@ -412,13 +409,13 @@ document.getElementById('player-name').addEventListener('input', () => {
     endGame(winner) {
       setTimeout(() => {
         if (winner === true) {
-          mostrarMensaje("GANASTE :)\nGracias por jugar!");
+          mostrarMensaje("YOU WON! :)\nThanks for playing!");
         } else if (winner === false) {
-          mostrarMensaje("PERDISTE :(\n¡A practicar más!");
+          mostrarMensaje("YOU LOST :(\nTime to practice more!");
         } else if (winner === "noEnergy") {
-          mostrarMensaje("TE QUEDASTE SIN ENERGÍA 😵\n¡Intentá ser más eficiente!");
+          mostrarMensaje("YOU RAN OUT OF ENERGY 😵\nBe more efficient next time!");
         } else {
-          mostrarMensaje("EMPATE 😐\n¡Qué partido parejo!");
+          mostrarMensaje("TIE 😐\nWhat a close match!");
         }
     
         setTimeout(() => location.reload(), 4500);
@@ -456,13 +453,12 @@ document.getElementById('player-name').addEventListener('input', () => {
   shotButton.addEventListener('click', () => {
     elementsForDecision.calcularPosicion();
   
-    const fueraDePorteria = (finalPointShot === null); // ✅ acá sí está correcto
-  
+    const fueraDePorteria = (finalPointShot === null); 
     if (!fueraDePorteria) {
       elementsForDecision.goalOrNoGoal();
     }
   
-    play.Play(fueraDePorteria); // ✅ pasamos este valor al método Play
+    play.Play(fueraDePorteria);
     reset.resetControls();
   });
   

@@ -9,33 +9,33 @@
 </head>
 <body>
         <div id="setup-screen" class="setup-screen">
-            <h2>Configura tu jugador</h2>
-            <label for="player-name">Nombre:</label>
+            <h2>Set up your player</h2>
+            <label for="player-name">Name:</label>
             <input type="text" id="player-name" placeholder="Escribe tu nombre..." maxlength="10"/>
           
             <div class="stats-distribution">
-              <p>Puntos restantes: <span id="remaining-points">8</span></p>
+              <p>Remaining points: <span id="remaining-points">8</span></p>
               
               <div class="stat-control">
-                <label>Fuerza: <span id="force-value">0</span></label>
+                <label>Power: <span id="force-value">0</span></label>
                 <button onclick="modifyStat('force', 1)">+</button>
                 <button onclick="modifyStat('force', -1)">-</button>
               </div>
           
               <div class="stat-control">
-                <label>Experiencia: <span id="experience-value">0</span></label>
+                <label>Experience: <span id="experience-value">0</span></label>
                 <button onclick="modifyStat('experience', 1)">+</button>
                 <button onclick="modifyStat('experience', -1)">-</button>
               </div>
           
               <div class="stat-control">
-                <label>Resistencia: <span id="resistence-value">0</span></label>
+                <label>Stamina: <span id="resistence-value">0</span></label>
                 <button onclick="modifyStat('resistence', 1)">+</button>
                 <button onclick="modifyStat('resistence', -1)">-</button>
               </div>
             </div>
           
-            <button onclick="startGame()" id="start-button" disabled>Comenzar Juego</button>
+            <button onclick="startGame()" id="start-button" disabled>Start Game!</button>
         </div>
              
     
@@ -150,13 +150,13 @@
                         <p>POWER!</p>
                     </button>
                     <button id="directionX-button">
-                        <p>WIDTHER!</p>
+                        <p>WIDTH!</p>
                     </button>
                     <button id="directionY-button">
-                        <p>HEIGTHER!</p>
+                        <p>HEIGHT!</p>
                     </button>
                     <button id="shoot-button">
-                        <p>SHOT!</p>
+                        <p>SHOoT!</p>
                     </button>
                 </div>
             </div>
@@ -187,7 +187,7 @@
             <div class="developed-by">
                 <p class="developed-by-title">Developed By:</p>
                 <p class="Ezequiel-Rojas">Ezequiel Rojas © All rights reserved 2025</p>
-                <p class="aclaration">*The distribution of the keeper's points was random.</p>
+                <p class="aclaration">*The keeper's stats were randomly distributed</p>
             </div>
             <div class="social-media">
                 <a href="https://www.instagram.com/rojasezequiel.914/" target="_blank">
