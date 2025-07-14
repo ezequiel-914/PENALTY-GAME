@@ -210,7 +210,7 @@ body{
     opacity: 0;
 }
 .goal-section-img{
-    background-image: url('img/ball.png');
+    background-image: url('img/ball-image.png');
     background-position: center;
     background-size: cover;
     width: 40px;
