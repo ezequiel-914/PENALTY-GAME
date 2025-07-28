@@ -600,6 +600,7 @@ body{
     width: 600px;
     height: 450px;
     display: flex;
+    margin-bottom: 50px;
     transition: transform 0.3s ease;
 }
 

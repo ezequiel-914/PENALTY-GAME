@@ -226,7 +226,7 @@
         grid-gap: 2px;
         grid-template-areas:
     "keeper keeper keeper keeper"
-    "area area area area"
+    "controls controls area area"
     "controls controls player player"
     "controls controls player player";
     }
@@ -363,9 +363,9 @@
         width: 200px;
      }
      .controls-shooter button{
-        width: 300px;
+        width: 240px;
         height: 60px;
-        font-size: 30px;
+        font-size: 28px;
 
      }
      /*###############  PLAYER ####################################*/
@@ -511,7 +511,7 @@
         grid-gap: 2px;
         grid-template-areas:
     "keeper keeper keeper keeper"
-    "area area area area"
+    ". . area area"
     "controls controls player player"
     "controls controls player player";
     }
@@ -534,7 +534,8 @@
   /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 
   .keeper-container-center{
-    transform: translateY(-80px);
+    transform: translateY(-80px)
+                translateX(-50px);
     width: 110px;
     height: 110px;
     display: block;
@@ -669,7 +670,7 @@
 
 
      .player-img{
-        transform: translateY(-200px)
+        transform: translateY(-100px)
                translateX(-30px);
      }
      /*############### FOOTER ####################################*/
@@ -735,7 +736,7 @@
   /*########################################################*/
   /*########################################################*/
 
-  @media (max-width: 480px) {
+  @media (min-width: 395px) and (max-width: 480px) {
     .player-status p{
         font-size: 10px;
       }
@@ -775,7 +776,7 @@
         grid-gap: 2px;
         grid-template-areas:
     "keeper keeper keeper keeper"
-    "area area area area"
+    ". . area area"
     "controls controls player player"
     "controls controls player player";
     }
@@ -798,7 +799,8 @@
   /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 
   .keeper-container-center{
-    transform: translateY(-80px);
+    transform: translateY(-80px)
+                translateX(-80px);
     width: 110px;
     height: 110px;
     display: block;
@@ -911,9 +913,9 @@
         width: 150px;
      }
      .controls-shooter button{
-        width: 150px;
-        height: 50px;
-        font-size: 25px;
+        width: 120px;
+        height: 40px;
+        font-size: 15px;
 
      }
      /*###############  PLAYER ####################################*/
@@ -927,14 +929,14 @@
         display: flex;
         justify-content: center;
         transform: translateX(-100px)
-                    translateY(130px);
+                    translateY(100px);
     
     }
 
 
      .player-img{
         transform: translateX(-30px)
-                    translateY(-190px);
+                    translateY(-180px);
      }
      /*############### FOOTER ####################################*/
      #footer{
@@ -988,6 +990,288 @@
     .setup-screen h2{
         font-size: 20px;
     }
+
+  }
+
+  @media (max-width: 394px){
+    .game-info{
+        height: 170px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .player-status p{
+        font-size: 12px;
+      }
+      .name{
+        margin-left: 0;
+      }
+      .game-status-quadro{
+        height: 55px;
+        width: 310px;
+        border: solid 1px blue;
+      }
+      .game-status, .players-status{
+        width: 230px;
+
+      }
+      .players-status{
+        border: solid 1px red;
+        width: 100%;
+        margin-left: 0;
+      }
+      .player-one-name, .player-two-name{
+        font-size: 13px;
+        margin: 0 7px 0 7px;
+        width: 80px;
+        
+    }
+    .noInformation, .goalBGround, .noGoalBGround{
+        height: 20px;
+        width: 20px;
+        margin-left: 4px;
+    }
+    .players-status{
+        padding-bottom: 0;
+        width: 300px;
+        height: 80px;
+        border: solid green 1px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .player-status{
+        border: solid red 1px;
+        margin: 0;
+        width: 140px;
+    }
+    .status-bar{
+        height: 10px;
+        width: 140px;
+    }
+    .stage-bottom{
+        grid-gap: 2px;
+        grid-template-areas:
+    "keeper keeper keeper keeper"
+    ". . area area"
+    "controls controls player player"
+    "controls controls player player";
+    }
+    /*###############GOAL AREA#########################################*/
+    .goal-area{
+        height: 100px;
+    }
+    .goal-structure-easy{
+        width: 280px;
+        height: 100px;
+        border-top: solid 7px rgba(49, 49, 49, 0.777);
+        border-left: solid 7px rgba(49, 49, 49, 0.777);
+        border-right: solid 7px rgba(49, 49, 49, 0.777);
+    }
+    .goal-section-img{
+        width: 10px;
+        height: 10px;
+    }
+
+  /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+
+  .keeper-container-center{
+    transform: translateY(-60px)
+                translateX(-133px);
+    width: 80px;
+    height: 80px;
+    display: block;
+    }
+    .keeper-container-left-top{
+        transform: translateY(-100px)
+                    translateX(-70px);
+        margin: 0 30px 0 30px;
+        height: 100px;
+        width: 165px;
+        display: none;
+    }
+    .keeper-container-left-down{
+        transform: translateY(-80px) translateX(-70px)
+        rotate(-15deg);
+        margin: 0 30px 0 30px;
+        height: 100px;
+        width: 165px;
+        display: none;
+    }
+    .keeper-container-right-top{
+        transform: translateY(-100px)
+                    translateX(90px);
+        margin: 0 30px 0 30px;
+        height: 100px;
+        width: 165px;
+        display: none;
+    }
+    .keeper-container-right-down{
+        transform: translateY(-80px) translateX(80px)
+        rotate(15deg);
+        margin: 0 30px 0 30px;
+        height: 100px;
+        width: 165px;
+        display: none;
+    }
+    .keeper-win-left-top{
+        transform: translateY(-100px)
+                    translateX(-80px);
+        margin: 0 30px 0 30px;
+        height: 100px;
+        width: 165px;
+        display: none;
+    }
+    .keeper-win-left-down{
+        transform: translateY(-70px) translateX(-80px)
+        rotate(-20deg);
+        margin: 0 30px 0 30px;
+        height: 100px;
+        width: 165px;
+        display: none;
+    }
+
+    .keeper-win-right-top{
+        transform: translateY(-100px)
+                    translateX(95px);
+        margin: 0 30px 0 30px;
+        height: 100px;
+        width: 165px;
+        display: none;
+    }
+    .keeper-win-right-down{
+        transform: translateY(-90px) translateX(100px)
+        rotate(20deg);
+        margin: 0 30px 0 30px;
+        height: 100px;
+        width: 165px;
+        display: none;
+    }
+    .keeper-celebration{
+        transform: translateY(-100px);
+        margin: 0 30px 0 30px;
+        width: 55px;
+        height: 120px;
+        display: none;
+    }
+    .keeper-celebration-without-ball{
+    transform: translateY(-100px);
+    margin: 0 30px 0 30px;
+    width: 55px;
+    height: 120px;
+    display: none;
+    }
+    .keeper-lose{
+        transform: translateY(-100px);
+        margin: 0 30px 0 30px;
+        width: 55px;
+        height: 120px;
+        display: none;
+    }
+     /*###############  CONTROLS ####################################*/
+    .area{
+        height: 140px;
+        width: 100%;
+
+    }
+
+    /*###############  CONTROLS ####################################*/
+     .controls{
+        align-items: center;
+        margin-top: 150px;
+        margin-left: 35px;
+     }
+     .controls-buttons{
+        width: 50%;
+        height: 200px;
+     }
+     .controls-shooter{
+        height: auto;
+        width: 150px;
+     }
+     .controls-shooter button{
+        width: 120px;
+        height: 40px;
+        font-size: 15px;
+
+     }
+     /*###############  PLAYER ####################################*/
+    .player{
+        display: flex;
+        width: 240px;
+     }
+     .ball{
+        width: 100px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        transform: translateX(-100px)
+                    translateY(100px);
+    
+    }
+
+
+     .player-img{
+        transform: translateX(-30px)
+                    translateY(-180px);
+     }
+     /*############### FOOTER ####################################*/
+     #footer{
+        display: flex;
+     }
+     .game-name{
+        display: none;
+    }
+     .developed-by{
+        width: 70%;
+        border-left: 0px;
+     }
+     .developed-by-title{
+        font-size: 5px;
+        margin-bottom: 5px;
+        font-weight: lighter;
+    }
+    .Ezequiel-Rojas{
+        font-size: 8px;
+        margin-bottom: 8px;
+    }
+    .aclaration{
+        font-size: 5px;
+    }
+
+
+    .social-media{
+        width: 30%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .instagram-icon{
+        width: 30px;
+        height: 30px;
+        margin: 0px 5px 0px 5px;
+    }
+    .github-icon{
+        width: 20px;
+        height: 20px;
+        margin: 0px 5px 0px 5px;
+    }
+    .linkedin-icon{
+        width: 30px;
+        height: 30px;
+        margin: 0px 5px 0px 5px;
+    }
+
+
+    .setup-screen h2{
+        font-size: 20px;
+    }
+
+
 
   }
 
