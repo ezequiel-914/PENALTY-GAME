@@ -193,14 +193,12 @@
       .game-status-quadro{
         height: 80px;
         width: 300px;
-        border: solid 1px blue;
       }
       .game-status, .players-status{
         width:300px;
 
       }
       .players-status{
-        border: solid 1px red;
         width: 300px;
         margin-left: 20px;
       }
@@ -478,14 +476,12 @@
       .game-status-quadro{
         height: 50px;
         width: 240px;
-        border: solid 1px blue;
       }
       .game-status, .players-status{
         width:250px;
 
       }
       .players-status{
-        border: solid 1px red;
         width: 230px;
         margin-left: 20px;
       }
@@ -743,14 +739,12 @@
       .game-status-quadro{
         height: 50px;
         width: 230px;
-        border: solid 1px blue;
       }
       .game-status, .players-status{
         width: 230px;
 
       }
       .players-status{
-        border: solid 1px red;
         width: 150px;
         margin-left: 20px;
       }
@@ -1011,14 +1005,12 @@
       .game-status-quadro{
         height: 55px;
         width: 310px;
-        border: solid 1px blue;
       }
       .game-status, .players-status{
         width: 230px;
 
       }
       .players-status{
-        border: solid 1px red;
         width: 100%;
         margin-left: 0;
       }
@@ -1037,14 +1029,12 @@
         padding-bottom: 0;
         width: 300px;
         height: 80px;
-        border: solid green 1px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
     }
     .player-status{
-        border: solid red 1px;
         margin: 0;
         width: 140px;
     }
@@ -1175,7 +1165,6 @@
     .area{
         height: 7px;
         width: 100vw;
-        border: solid green 3px;
 
     }
 
@@ -1184,7 +1173,6 @@
         width: 100vw;
         align-items: center;
         margin-top: 200px;
-        border: solid 3px red;
      }
      .controls-buttons{
         width: 50%;
@@ -1204,7 +1192,6 @@
     .player{
         display: flex;
         width: 100%;
-        border: solid blue 1px;
      }
      .ball{
         width: 50px;
