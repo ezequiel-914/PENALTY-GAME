@@ -908,6 +908,9 @@
         align-items: center;
         margin-top: 150px;
         margin-left: 35px;
+        border: rgb(228, 228, 0) 3px solid;
+        transform: translateY(-40px)
+                    translateX(4px);
      }
      .controls-buttons{
         width: 50%;
@@ -1000,7 +1003,8 @@
 
   @media (max-width: 394px){
     .stage{
-        flex: 10;
+        flex: 5;
+        height: 90%;
     }
     .stage-top{
         grid-gap: 0;
@@ -1193,11 +1197,11 @@
     /*###############  CONTROLS ####################################*/
      .controls{
         width: 50vw;
-        align-items: flex-end;
+        align-items: center;
         justify-content: flex-start;
         border: rgb(228, 228, 0) 3px solid;
-        transform: translateY(-200px);
-                    /*translateY(-200px);*/
+        transform: translateY(-240px)
+                    translateX(34px);
      
      }
      .controls-buttons{
