@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const directionsYInput = document.querySelector('.controls-direction-vertical-input');
   const directionsGoal = document.querySelector('.controls-direction-goal');
   const shotButton = document.querySelector('#shoot-button');
-  
+  const jugador = document.querySelector('#elemento-shooter');
+  const ball = document.querySelector('.ball-img');
 
 
 
@@ -232,6 +233,17 @@ document.getElementById('player-name').addEventListener('input', () => {
     }
   }
 
+  function actualizarImagen() {
+  if (window.matchMedia('(max-width: 394px)').matches) {
+    jugador.src = "./img/player-small.png";
+  } else {
+    jugador.src = "./img/player.png";
+  }
+  
+}
+
+actualizarImagen();
+window.addEventListener('resize', actualizarImagen);
 
   function animarJugador(esGol) {
     
@@ -270,7 +282,6 @@ document.getElementById('player-name').addEventListener('input', () => {
     let keeperDiv = null;
   
     if (fueraDePorteria) {
-      // 🎯 Si el disparo fue afuera
       keeperDiv = document.querySelector('.keeper-celebration-without-ball');
   
       if (keeperDiv) keeperDiv.style.display = 'block';
@@ -284,7 +295,7 @@ document.getElementById('player-name').addEventListener('input', () => {
     }
   
     if (esGol) {
-      // 🎯 Si es GOL (el arquero pierde pero se tira)
+  
       if ([1, 2].includes(finalPointShot)) keeperDiv = document.querySelector('.keeper-container-left-top');
       else if (finalPointShot === 4) keeperDiv = document.querySelector('.keeper-container-left-down');
       else if ([8, 9].includes(finalPointShot)) keeperDiv = document.querySelector('.keeper-container-right-top');
@@ -321,8 +332,8 @@ document.getElementById('player-name').addEventListener('input', () => {
         setTimeout(() => {
           celebration.style.display = 'none';
           document.querySelector('.keeper-container-center').style.display = 'block';
-        }, 2000); // Fin de celebración
-      }, 1000); // Después de mostrar que atajó
+        }, 2000);
+      }, 1000); 
     }
   }
   

@@ -190,6 +190,9 @@
     .player-status p{
         font-size: 20px;
       }
+      .stage{
+        height: 90%;
+    }
       .game-status-quadro{
         height: 80px;
         width: 300px;
@@ -473,6 +476,9 @@
     .player-status p{
         font-size: 12px;
       }
+      .stage{
+        height: 90%;
+    }
       .game-status-quadro{
         height: 50px;
         width: 240px;
@@ -733,6 +739,9 @@
   /*########################################################*/
 
   @media (min-width: 395px) and (max-width: 480px) {
+    .stage{
+        height: 90%;
+    }
     .player-status p{
         font-size: 10px;
       }
@@ -988,14 +997,23 @@
   }
 
   @media (max-width: 394px){
+    .stage{
+        flex: 10;
+    }
+    .stage-top{
+        grid-gap: 0;
+    }
+     .stage-bottom{
+        height: 100%;
+    }
     .game-info{
         height: 120px;
         width: 100%;
+        margin-top: 0;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        border: blue solid 1px;
     }
     .player-status p{
         font-size: 12px;
@@ -1035,7 +1053,6 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-        border: solid 1px red;
     }
     .player-status{
         margin: 0;
@@ -1047,6 +1064,7 @@
     }
     .stage-bottom{
         grid-gap: 2px;
+
         grid-template-areas:
     "keeper"
     "area"
@@ -1167,16 +1185,15 @@
     .area{
         height: 7px;
         width: 100vw;
-        border: solid brown 1px;
-
     }
 
     /*###############  CONTROLS ####################################*/
      .controls{
         width: 50vw;
-        align-items: center;
+        align-items: flex-end;
+        justify-content: flex-end;
         margin-top: 2px;
-        border: solid rgb(208, 208, 15) 1px;
+     
      }
      .controls-buttons{
         width: 50%;
@@ -1184,7 +1201,7 @@
      }
      .controls-shooter{
         height: auto;
-        width: 150px;
+        width: 110px;
      }
      .controls-shooter button{
         width: 120px;
@@ -1195,30 +1212,36 @@
      /*###############  PLAYER ####################################*/
     .player{
         display: flex;
-        width: 100%;
+        width: 100vw;
+        flex-direction: row;
+        justify-content: flex-start;
      }
      .ball{
         width: 50px;
         height: 20px;
         display: flex;
         justify-content: center;
-        transform: translateX(20px)
-                    translateY(-150px);
+        transform: translateX(200px)
+                    translateY(-240px);
     }
     .ball-img{
          background-image: url('img/ball-image-small.png');
+         width: 50px;
+         height: 50px;
+        
     }
 
 
      .player-img{
-        border: solid 1px red;
+        height: 400px;
          /* transform: translateX(-10px)
                     translateY(-200px);*/
      }
+
      /*############### FOOTER ####################################*/
      #footer{
         display: flex;
-        height: 40px;
+        height: 100px;
      }
      .game-name{
         display: none;

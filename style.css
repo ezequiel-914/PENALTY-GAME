@@ -19,7 +19,7 @@ body{
 .stage{
     width: 100%;
     flex: 1;
-    height: 90%;
+    height: 100vh;
     background: linear-gradient(to bottom, rgb(71, 70, 70) 0%, rgb(118, 118, 118) 3%,  rgb(170, 169, 169) 7%,#e5e5e5 25%, #f1f1f1 50%, white 100%);
     background-color: #e5e5e5;
     display: flex;
