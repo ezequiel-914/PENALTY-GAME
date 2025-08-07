@@ -659,6 +659,7 @@
     .player{
         display: flex;
         width: 240px;
+        
      }
      .ball{
         width: 100px;
@@ -674,6 +675,7 @@
      .player-img{
         transform: translateY(-100px)
                translateX(-30px);
+               
      }
      /*############### FOOTER ####################################*/
      #footer{
@@ -1068,7 +1070,8 @@
         grid-template-areas:
     "keeper"
     "area"
-    "controls player";
+    "player"
+    "controls ";
     }
     /*###############GOAL AREA#########################################*/
     .goal-area{
@@ -1191,8 +1194,10 @@
      .controls{
         width: 50vw;
         align-items: flex-end;
-        justify-content: flex-end;
-        margin-top: 2px;
+        justify-content: flex-start;
+        border: rgb(228, 228, 0) 3px solid;
+        transform: translateY(-200px);
+                    /*translateY(-200px);*/
      
      }
      .controls-buttons{
@@ -1213,8 +1218,11 @@
     .player{
         display: flex;
         width: 100vw;
+        height: 290px;
         flex-direction: row;
         justify-content: flex-start;
+        align-items: flex-end;
+        border: solid 1px blue;
      }
      .ball{
         width: 50px;
@@ -1234,8 +1242,8 @@
 
      .player-img{
         height: 400px;
-         /* transform: translateX(-10px)
-                    translateY(-200px);*/
+     
+        border: solid 1px red;
      }
 
      /*############### FOOTER ####################################*/

@@ -235,7 +235,7 @@ document.getElementById('player-name').addEventListener('input', () => {
 
   function actualizarImagen() {
   if (window.matchMedia('(max-width: 394px)').matches) {
-    jugador.src = "./img/player-small.png";
+    jugador.src = "./img/player.png";
   } else {
     jugador.src = "./img/player.png";
   }
