@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const directionsYInput = document.querySelector('.controls-direction-vertical-input');
   const directionsGoal = document.querySelector('.controls-direction-goal');
   const shotButton = document.querySelector('#shoot-button');
+  
 
 
 
@@ -230,10 +231,10 @@ document.getElementById('player-name').addEventListener('input', () => {
       setTimeout(() => area.classList.remove('animate-shot'), 900);
     }
   }
-  
+
+
   function animarJugador(esGol) {
-    const jugador = document.querySelector('#elemento-shooter');
-    const ball = document.querySelector('.ball-img');
+    
   
     // Paso 1: antes del tiro
     jugador.style.transform = "translateX(229px);";

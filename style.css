@@ -161,7 +161,7 @@ body{
   .status-bar-fill {
     height: 100%;
     width: 100%;
-    background-color: green; /* valor inicial */
+    background-color: green;
     transition: width 0.5s ease, background-color 0.5s ease;
   }
 
