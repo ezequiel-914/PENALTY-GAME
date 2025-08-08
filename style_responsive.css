@@ -908,7 +908,6 @@
         align-items: center;
         margin-top: 150px;
         margin-left: 35px;
-        border: rgb(228, 228, 0) 3px solid;
         transform: translateY(-40px)
                     translateX(4px);
      }
@@ -1199,7 +1198,6 @@
         width: 50vw;
         align-items: center;
         justify-content: flex-start;
-        border: rgb(228, 228, 0) 3px solid;
         transform: translateY(-240px)
                     translateX(34px);
      
@@ -1226,7 +1224,6 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: flex-end;
-        border: solid 1px blue;
      }
      .ball{
         width: 50px;
@@ -1246,8 +1243,6 @@
 
      .player-img{
         height: 400px;
-     
-        border: solid 1px red;
      }
 
      /*############### FOOTER ####################################*/

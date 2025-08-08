@@ -143,6 +143,7 @@ function startGame() {
 
   const name = document.getElementById('player-name').value.trim();
   document.querySelector('.player-two-name').innerText = name;
+  document.querySelector('.status-name').innerText = name;
   //document.querySelector('.status-modifyStat').innerText = name;
 
   // Puntos del arquero
@@ -289,7 +290,7 @@ window.addEventListener('resize', actualizarImagen);
       setTimeout(() => {
         keeperDiv.style.display = 'none';
         document.querySelector('.keeper-container-center').style.display = 'block';
-      }, 2000); // Tiempo de celebración
+      }, 3000); // Tiempo de celebración
   
       return; // Terminar acá
     }
