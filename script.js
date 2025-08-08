@@ -186,8 +186,20 @@ defaultKeeper.maxForce = keeperStats.force;
 defaultKeeper.currentForce = keeperStats.force;
 defaultKeeper.experience = keeperStats.experience;
 defaultKeeper.resistence = keeperStats.resistence;
+document.getElementById('setup-screen').style.display = 'none';
 
-  document.getElementById('setup-screen').style.display = 'none';
+//###########    NOMBRE ALEATRIO PARA EL ARQUERO
+fetch('https://randomuser.me/api/')
+  .then(response => response.json())
+  .then(data => {
+    const keeperName = data.results[0].name.first;
+    document.querySelector('.player-one-name').innerText = keeperName;
+     document.querySelector('.player-one-name-energy').innerText = keeperName;
+  })
+  .catch(error => {
+    console.error('Error fetching keeper name:', error);
+    document.querySelector('.player-one-name').innerText = 'Keeper';
+  });
 }
 
 document.getElementById('player-name').addEventListener('input', () => {
@@ -538,7 +550,27 @@ window.addEventListener('resize', actualizarImagen);
   
   window.modifyStat = modifyStat;
   window.startGame = startGame;
-
-
-
   });
+
+document.addEventListener('keydown', function (event) {
+  const isDesktop = window.innerWidth >= 1025;
+
+  if (isDesktop && event.code === 'Space') {
+    event.preventDefault();
+
+    const powerBtn = document.getElementById('power-button');
+    const dirXBtn = document.getElementById('directionX-button');
+    const dirYBtn = document.getElementById('directionY-button');
+    const shootBtn = document.getElementById('shoot-button');
+
+    if (getComputedStyle(powerBtn).display !== 'none') {
+      powerBtn.click();
+    } else if (getComputedStyle(dirXBtn).display !== 'none') {
+      dirXBtn.click();
+    } else if (getComputedStyle(dirYBtn).display !== 'none') {
+      dirYBtn.click();
+    } else if (getComputedStyle(shootBtn).display !== 'none') {
+      shootBtn.click();
+    }
+  }
+});

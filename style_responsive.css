@@ -57,7 +57,7 @@
      }
      /*###############PLAYER#########################################*/
      .ball{
-        transform: translateY(-70px);
+        transform: translateY(-150px);
      }
      .ball-img{
         width: 60px;
@@ -137,7 +137,7 @@
      }
      /*###############PLAYER#########################################*/
      .ball{
-        transform: translateY(-70px);
+        transform: translateY(-130px);
      }
      .ball-img{
         width: 60px;

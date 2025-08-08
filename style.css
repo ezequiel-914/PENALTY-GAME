@@ -550,7 +550,7 @@ body{
     height: 20px;
     display: flex;
     justify-content: center;
-    transform: translateY(-50px);
+    transform: translateY(-300px);
 
 }
 .ball-img{
