@@ -1013,6 +1013,9 @@
   /*########################################################*/
 
   @media (max-width: 394px){
+    body{
+        overflow-x: hidden;
+    }
     .stage{
         flex: 5;
         min-height: 90%;
@@ -1021,7 +1024,7 @@
         grid-gap: 0;
     }
      .stage-bottom{
-        height: 100%;
+        min-height: 100%;
     }
     .game-info{
         height: 120px;
