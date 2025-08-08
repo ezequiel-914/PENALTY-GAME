@@ -1,6 +1,18 @@
 
+ let playerStats = { force: 0, experience: 0, resistence: 0 };
 
+function modifyStat(stat, delta) {
+  const total = playerStats.force + playerStats.experience + playerStats.resistence;
+  if (delta === 1 && total >= 8) return;
+  if (delta === -1 && playerStats[stat] === 0) return;
 
+  playerStats[stat] += delta;
+  document.getElementById(`${stat}-value`).innerText = playerStats[stat];
+  document.getElementById('remaining-points').innerText = 8 - (total + delta);
+
+  const nameFilled = document.getElementById('player-name').value.trim() !== '';
+  document.getElementById('start-button').disabled = ((playerStats.force + playerStats.experience + playerStats.resistence) !== 8 || !nameFilled);
+}
 
 
 
@@ -21,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const shotButton = document.querySelector('#shoot-button');
   const jugador = document.querySelector('#elemento-shooter');
   const ball = document.querySelector('.ball-img');
+  let playerStats = { force: 0, experience: 0, resistence: 0 };
+  let gameEnded = false;
+
 
 
 
@@ -112,16 +127,26 @@ document.addEventListener('DOMContentLoaded', () => {
     directionYButton.style.display = 'none';
     shotButton.style.display = 'block';
   });
+
+
+  //##########
+  //###########
+  //         AQUI ADICIONÉ maxForce y currentForce en un intento de arreglar el problema de energía.
+  //         LUEGO LES ATRIBUÍ LOS STATS QUE EL JUGADOR LES ASIGNÓ
+  //         AHORA EN LA LINEA 348 DEBO MODIFICAR LA FUNCTION reduceStats() 
   
-  const defaultKeeper = { force: 3, experience: 3, resistence: 2 };
-  const defaultPlayer = { force: 3, experience: 2, resistence: 3 };
+  const defaultKeeper = { force: 3, experience: 3, resistence: 2, maxForce:0, currentForce:0 };
+  const defaultPlayer = { force: 3, experience: 2, resistence: 3, maxForce:0, currentForce:0 };
   
   let keeperMainChoice = null;
   let keeperSecondChoice = null;
 
   // ####################### CONFIGURACIÓN INICIAL DEL JUGADOR #############################
-let playerStats = { force: 0, experience: 0, resistence: 0 };
+
 let remainingPoints = 8;
+defaultPlayer.maxForce = playerStats.force;
+defaultPlayer.currentForce = playerStats.force;
+
 
 function modifyStat(stat, delta) {
   const total = playerStats.force + playerStats.experience + playerStats.resistence;
@@ -137,9 +162,11 @@ function modifyStat(stat, delta) {
 }
 
 function startGame() {
-  defaultPlayer.force = playerStats.force;
-  defaultPlayer.experience = playerStats.experience;
-  defaultPlayer.resistence = playerStats.resistence;
+defaultPlayer.maxForce = playerStats.force;
+defaultPlayer.currentForce = playerStats.force;
+defaultPlayer.experience = playerStats.experience;
+defaultPlayer.resistence = playerStats.resistence;
+
 
   const name = document.getElementById('player-name').value.trim();
   document.querySelector('.player-two-name').innerText = name;
@@ -155,9 +182,11 @@ function startGame() {
     keeperStats[stat]++;
     points--;
   }
-  defaultKeeper.force = keeperStats.force;
-  defaultKeeper.experience = keeperStats.experience;
-  defaultKeeper.resistence = keeperStats.resistence;
+defaultKeeper.maxForce = keeperStats.force;
+defaultKeeper.currentForce = keeperStats.force;
+defaultKeeper.experience = keeperStats.experience;
+defaultKeeper.resistence = keeperStats.resistence;
+
   document.getElementById('setup-screen').style.display = 'none';
 }
 
@@ -211,7 +240,8 @@ document.getElementById('player-name').addEventListener('input', () => {
     },
   
     goalOrNoGoal() {
-      const shotPower = parseInt(((defaultPlayer.force * shotForce) / 100).toFixed(1));
+      const shotPower = parseInt(((defaultPlayer.currentForce * shotForce) / 100).toFixed(1));
+
       if (finalPointShot === keeperMainChoice || finalPointShot === keeperSecondChoice) {
         if (defaultKeeper.force > shotPower) isGoal = 0;
         else if (defaultKeeper.force === shotPower) isGoal = Math.random() > 0.5 ? 1 : 0;
@@ -346,31 +376,31 @@ window.addEventListener('resize', actualizarImagen);
     shot: 1,
 
     reduceStats() {
-      const reduceForce = (currentForce, resistence) => {
-        const reduction = 1 / resistence;
-        const newForce = Math.max(0, currentForce - reduction);
-        return parseFloat(newForce.toFixed(2));
+      const reduceForce = (current, resistence) => {
+        const reduction = 0.3 / resistence;
+        return Math.max(0, parseFloat((current - reduction).toFixed(2)));
       };
-    
-      defaultPlayer.force = reduceForce(defaultPlayer.force, defaultPlayer.resistence);
-      defaultKeeper.force = reduceForce(defaultKeeper.force, defaultKeeper.resistence);
+
+      defaultPlayer.currentForce = reduceForce(defaultPlayer.currentForce, defaultPlayer.resistence);
+      defaultKeeper.currentForce = reduceForce(defaultKeeper.currentForce, defaultKeeper.resistence);
+
       this.updateForceBars();
     },
     updateForceBars() {
       const playerBar = document.getElementById('player-force-bar');
       const keeperBar = document.getElementById('keeper-force-bar');
-    
-      const maxForce = 3;
-      const playerPercent = (defaultPlayer.force / maxForce) * 100;
-      const keeperPercent = (defaultKeeper.force / maxForce) * 100;
-    
+
+      const playerPercent = (defaultPlayer.currentForce / defaultPlayer.maxForce) * 100;
+      const keeperPercent = (defaultKeeper.currentForce / defaultKeeper.maxForce) * 100;
+
       playerBar.style.width = `${playerPercent}%`;
       keeperBar.style.width = `${keeperPercent}%`;
-    
+
       playerBar.style.backgroundColor = this.getColorByPercentage(playerPercent);
       keeperBar.style.backgroundColor = this.getColorByPercentage(keeperPercent);
     },
     getColorByPercentage(percent) {
+      if (isNaN(percent) || percent === 0) return 'red';
       if (percent >= 66) return 'green';
       if (percent >= 33) return 'yellow';
       if (percent >= 15) return 'orange';
@@ -408,7 +438,7 @@ window.addEventListener('resize', actualizarImagen);
     },
   
     Game() {
-      if (defaultPlayer.force <= 0) {
+      if (defaultPlayer.currentForce <= 0) {
         return this.endGame("noEnergy");
       }
       
@@ -427,19 +457,38 @@ window.addEventListener('resize', actualizarImagen);
     },
   
     endGame(winner) {
+      gameEnded = true;
       setTimeout(() => {
         if (winner === true) {
           mostrarMensaje("YOU WON! :)\nThanks for playing!");
-        } else if (winner === false) {
+          jugador.style.transform = "translateX(-573px)";
+          setTimeout(() => {
+            keeperDiv.style.display = 'none';
+            document.querySelector('.keeper-lose').style.display = 'block';
+          }, 1000);
+     }
+        else if (winner === false) {
           mostrarMensaje("YOU LOST :(\nTime to practice more!");
+          setTimeout(() => {
+            keeperDiv.style.display = 'none';
+            document.querySelector('.keeper-celebration-without-ball').style.display = 'block';
+          }, 1000);
+          jugador.style.transform = "translateX(-375px)";
+          
         } else if (winner === "noEnergy") {
           mostrarMensaje("YOU RAN OUT OF ENERGY 😵\nBe more efficient next time!");
+          setTimeout(() => {
+            keeperDiv.style.display = 'none';
+            document.querySelector('keeper-celebration-without-ball').style.display = 'block';
+          }, 1000);
+          jugador.style.transform = "translateX(-375px)";
+
         } else {
           mostrarMensaje("TIE 😐\nWhat a close match!");
         }
     
-        setTimeout(() => location.reload(), 4500);
-      }, 1000);
+        setTimeout(() => location.reload(), 4000);
+      }, 3000);
     }
     
   };
@@ -456,6 +505,7 @@ window.addEventListener('resize', actualizarImagen);
   
   const reset = {
     resetControls() {
+      if (gameEnded || (typeof play !== 'undefined' && play.shot > 5)) return;
       shotButton.style.display = 'none';
       constrolsDirections.style.display = 'none';
       directionsYLabel.style.display = 'none';
@@ -477,9 +527,13 @@ window.addEventListener('resize', actualizarImagen);
     if (!fueraDePorteria) {
       elementsForDecision.goalOrNoGoal();
     }
-  
+
+
+// corregir pose final!!!
+
+
     play.Play(fueraDePorteria);
-    reset.resetControls();
+    if (play.shot <= 5 && defaultPlayer.currentForce > 0) {reset.resetControls();}
   });
   
   window.modifyStat = modifyStat;
