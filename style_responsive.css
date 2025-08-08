@@ -1003,7 +1003,7 @@
   @media (max-width: 394px){
     .stage{
         flex: 5;
-        height: 90%;
+        min-height: 90%;
     }
     .stage-top{
         grid-gap: 0;
@@ -1249,6 +1249,8 @@
      #footer{
         display: flex;
         height: 100px;
+        flex-shrink: 0;
+
      }
      .game-name{
         display: none;
