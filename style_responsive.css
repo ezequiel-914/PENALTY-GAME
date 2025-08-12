@@ -1218,8 +1218,8 @@
         border: solid 3px red;
         align-items: center;
         justify-content: flex-start;
-        transform: translateY(40px)
-                    translateX(34px);
+        transform: translateX(4px)
+                    scale(0.7);
                     
      
      }
@@ -1252,12 +1252,12 @@
         height: 20px;
         display: flex;
         justify-content: center;
-        transform: translateX(200px)
+        transform: translateX(170px)
                     translateY(-240px);
-        display: none;
     }
     .ball-img{
          background-image: url('img/ball-image-small.png');
+         transition: all 1s ease;
          width: 40px;
          height: 40px;
         
@@ -1265,6 +1265,7 @@
 
      .player-img{
         height: 400px;
+        transition: all 1s ease;
      }
 
      /*############### FOOTER ####################################*/
